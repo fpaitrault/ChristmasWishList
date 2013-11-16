@@ -1,0 +1,47 @@
+<?page title="Liste de noël"?>
+<?init class="org.ganaccity.AuthenticationInit"?>
+<?script type="text/javascript" src="/snowfall.js"?>
+<window border="none" height="100%" width="100%"
+    apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm') @init('org.ganaccity.viewmdl.MainWindow')"
+    style="
+    background-image: url('http://florent.paitrault.free.fr/background.png');
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    cursor: url(http://i47.tinypic.com/2hofe52.jpg), auto;
+    ">
+    <script type="text/javascript">
+        snowFall.snow(document.getElementsByTagName("body"), {shadow:
+        true, maxSize: 10, round: true});
+    </script>
+    <borderlayout width="100%" style="background: transparent;">
+        <north height="128px"
+            style=" 
+    background-image: url('http://florent.paitrault.free.fr/noel1.jpg');
+    background-position: bottom left;
+    background-repeat: repeat-x;
+        ">
+            <menubar>
+                <menuitem label="Déconnexion"
+                    onClick="@command('logout')" />
+                <menuitem disabled="true" label="Bienvenue ${vm.user}" />
+            </menubar>
+        </north>
+        <center style="background: transparent;">
+            <tabbox height="100%" style="background: transparent;">
+                <tabs children="@load(vm.users)" >
+                    <template name="children">
+                        <tab>Liste de ${each}</tab>
+                    </template>
+                </tabs>
+                <tabpanels children="@load(vm.users)">
+                    <template name="children">
+                        <tabpanel>
+                            <include user="${each}" src="${each.name eq 'Noel' ? 'welcome.zul':'usergrid.zul'}" />
+                        </tabpanel>
+                    </template>
+                </tabpanels>
+            </tabbox>
+        </center>
+    </borderlayout>
+</window>

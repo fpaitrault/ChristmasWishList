@@ -1,0 +1,77 @@
+<zk>
+    <style>
+        body { background-color: #dcf6ff; } .z-grid-embedded-cnt {
+        background-color: #dcf6ff; }
+    </style>
+    <window apply="org.zkoss.bind.BindComposer"
+        viewModel="@id('vm') @init('org.ganaccity.viewmdl.Login')"
+        border="none">
+        <div align="center">
+            <image src="img/accueil.png"/>
+            <grid width="210pt">
+                <rows>
+                    <row>
+                        Nom utilisateur
+                        <div align="center">
+                            <textbox width="90%"
+                                value="@bind(vm.name)" />
+                        </div>
+                    </row>
+                    <row>
+                        Mot de passe
+                        <div align="center">
+                            <textbox width="90%" type="password"
+                                value="@bind(vm.password)" onOK="@command('login')" />
+                        </div>
+                    </row>
+                    <row>
+                        <span />
+                        <div align="center">
+                            <button label="Valider"
+                                onClick="@command('login')" />
+                        </div>
+                    </row>
+
+                </rows>
+            </grid>
+            <image src="img/accueil2.png"/>
+        </div>
+        <window mode="modal" title="Première connexion" width="300px"
+                visible="@bind(vm.firstLogin)">
+            <grid width="100%">
+                <rows>
+                    <row>
+                        Nom utilisateur
+                        <div align="center">
+                            <label width="90%"
+                                value="@bind(vm.name)" />
+                        </div>
+                    </row>
+                    <row>
+                        Mot de passe
+                        <div align="center">
+                            <textbox width="90%" type="password"
+                                value="@bind(vm.password)" />
+                        </div>
+                    </row>
+                    <row>
+                        Confirmer le mot de passe
+                        <div align="center">
+                            <textbox width="90%" type="password"
+                                value="@bind(vm.passwdConfirm)" />
+                            <label class="error"
+                                value="@bind(vm.passwdErrorMsg)" />
+                        </div>
+                    </row>
+                    <row>
+                        <span />
+                        <div align="center">
+                            <button label="Valider"
+                                onClick="@command('firstLogin')" />
+                        </div>
+                    </row>
+                </rows>
+            </grid>
+        </window>
+    </window>
+</zk>
