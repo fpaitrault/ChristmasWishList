@@ -1,0 +1,72 @@
+<zk>
+    <borderlayout apply="org.zkoss.bind.BindComposer"
+        viewModel="@id('vm') @init('org.fpaitrault.viewmdl.UserGrid')">
+        <north>
+            <button label="Ajouter une idée"
+                onClick="@command('addIdea')" />
+        </north>
+        <center>
+            <grid height="100%"
+                model="@load(vm.wishList) @template((each.editStatus) ? 'editable' : 'noneditable')">
+                <columns>
+                    <column label="Description" hflex="4" />
+                    <column label="Commentaires" hflex="4"
+                        visible="@load(vm.currentUserList)" />
+                    <column label="Idée réservée par" hflex="2"
+                        visible="@load(vm.currentUserList)" />
+                    <column label="Actions" width="100px" />
+                </columns>
+                <template name="noneditable">
+                    <row>
+                        <div>
+                            <html content="@load(each.wish.descr)" />
+                        </div>
+
+                        <div visible="@load(vm.currentUserList)">
+                            <html content="@load(each.wish.comment)" />
+                        </div>
+                        <label visible="@load(vm.currentUserList)"
+                            value="@load(each.wish.reservedBy)" />
+                        <hbox>
+                            <button image="/img/pencil-small.png"
+                                onClick="@command('changeEditStatus', wishStatus=each)" />
+                        </hbox>
+                    </row>
+                </template>
+                <template name="editable">
+                    <row>
+                        <ckeditor
+                            value="@load(each.wish.descr) @save(each.wish.descr, before='confirm')"
+                            width="100%"
+                            customConfigurationsPath="/config.js" />
+
+                        <ckeditor visible="@load(vm.currentUserList)"
+                            width="100%"
+                            value="@load(each.wish.comment) @save(each.wish.comment, before='confirm')"
+                            customConfigurationsPath="/config.js" />
+                        <combobox visible="@load(vm.currentUserList)"
+                            model="@load(vm.users)"
+                            selectedItem="@load(each.wish.reservedBy) @save(each.wish.reservedBy, before='confirm')"
+                            mold="rounded" width="100%">
+                            <comboitem label="" />
+                            <template name="model" var="item">
+                                <comboitem label="@load(item.name)" />
+                            </template>
+                        </combobox>
+
+                        <vbox>
+                            <hbox>
+                                <button image="/img/tick-small.png"
+                                    onClick="@command('confirm', wishStatus=each)" />
+                                <button image="/img/cross-small.png"
+                                    onClick="@command('changeEditStatus', wishStatus=each)" />
+                            </hbox>
+                            <button label="Supprimer"
+                                onClick="@command('deleteIdea', wishStatus=each)" />
+                        </vbox>
+                    </row>
+                </template>
+            </grid>
+        </center>
+    </borderlayout>
+</zk>
