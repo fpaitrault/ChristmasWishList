@@ -15,7 +15,7 @@ public class UserDAO extends GenericDAO<User> {
 
     public final User readByUserName(final String username) {
         for (User user : userCache) {
-            if (user.getName().equals(username)) {
+            if (user.getName().equalsIgnoreCase(username)) {
                 return user;
             }
         }

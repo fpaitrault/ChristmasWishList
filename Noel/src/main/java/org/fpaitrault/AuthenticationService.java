@@ -27,7 +27,7 @@ public class AuthenticationService {
 	
 	public boolean login(String name, String password) {
 		for(User user : users.readAll()) {
-			if(user.getName().equals(name) &&
+			if(user.getName().equalsIgnoreCase(name) &&
 					user.getHash().equals(DigestUtils.md5Hex(password))) {
 			       //Store identifiers into session database
 		        UUID uuid = UUID.randomUUID();
