@@ -6,7 +6,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://192.168.0.20:3306/christmas?autoReconnect=true</property>
+        <property name="hibernate.connection.url">jdbc:mysql://192.168.0.20:3306/christmas_valid?autoReconnect=true</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">tigrou</property>
         <property name="hibernate.connection.pool_size">10</property>
