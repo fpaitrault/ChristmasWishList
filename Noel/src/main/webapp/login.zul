@@ -4,10 +4,11 @@
         background-color: #dcf6ff; }
     </style>
     <window apply="org.zkoss.bind.BindComposer"
-        viewModel="@id('vm') @init('org.ganaccity.viewmdl.Login')"
-        border="none">
+        viewModel="@id('vm') @init('org.ganaccity.viewmdl.Login', mode='mock')"
+        border="none"
+        onClientInfo='@command("clientInfoChanged", evt=event)'>
         <div align="center">
-            <image src="img/accueil.png"/>
+            <image src="img/accueil.png" visible="@load(vm.deviceMode.phone?'false':'true')"/>
             <grid width="210pt">
                 <rows>
                     <row>
@@ -34,7 +35,7 @@
 
                 </rows>
             </grid>
-            <image src="img/accueil2.png"/>
+            <image src="img/accueil2.png" visible="@load(vm.deviceMode.phone?'false':'true')"/>
         </div>
         <window mode="modal" title="Première connexion" width="300px"
                 visible="@bind(vm.firstLogin)">
