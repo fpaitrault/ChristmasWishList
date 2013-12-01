@@ -1,22 +1,22 @@
 package org.ganaccity.dao;
 
-import java.util.Calendar;
 import java.util.List;
 
+import org.ganaccity.interfaces.dao.GenericDAO;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.zkoss.zkplus.hibernate.HibernateUtil;
 
-public class GenericDAO<T extends Object> {
+public class GenericDAOImpl<T extends Object> implements GenericDAO<T> {
     protected static final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
     protected static Session currentSession = null;
     private Class<T> type;
     public final Class<T> getType() {
         return type;
     }
-    public GenericDAO(final Class<T> type) {
+    public GenericDAOImpl(final Class<T> type) {
         this.type = type;
     }
     
