@@ -54,6 +54,9 @@ public class Wish {
 		return comment;
 	}
 	public void setComment(String comment) {
+        User user = AuthenticationService.instance().getUserCredential();
+        if(user.equals(this.dest))
+            return;
 		this.comment = comment;
 	}
 	public User getAuthor() {
@@ -69,6 +72,9 @@ public class Wish {
 		return reservedBy;
 	}
 	public void setReservedBy(User reservedBy) {
+        User user = AuthenticationService.instance().getUserCredential();
+        if(user.equals(this.dest))
+            return;
 		this.reservedBy = reservedBy;
 	}
 	public User getDest() {
