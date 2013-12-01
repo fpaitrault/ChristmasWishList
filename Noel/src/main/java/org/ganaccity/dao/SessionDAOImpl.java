@@ -1,12 +1,15 @@
 package org.ganaccity.dao;
 
-import org.ganaccity.dao.GenericDAO;
+import org.ganaccity.dao.GenericDAOImpl;
+import org.ganaccity.interfaces.dao.SessionDAO;
 import org.ganaccity.mdl.Session;
 import org.ganaccity.mdl.User;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
-public class SessionDAO extends GenericDAO<Session> {
-    public SessionDAO() {
+@Service("sessionDAO")
+public class SessionDAOImpl extends GenericDAOImpl<Session> implements SessionDAO {
+    public SessionDAOImpl() {
     	super(Session.class);
     }
 

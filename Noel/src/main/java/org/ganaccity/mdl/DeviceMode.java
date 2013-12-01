@@ -1,4 +1,4 @@
-package org.ganaccity;
+package org.ganaccity.mdl;
 
 import org.zkoss.zk.ui.event.ClientInfoEvent;
 
