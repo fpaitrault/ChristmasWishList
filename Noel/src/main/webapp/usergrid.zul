@@ -11,9 +11,9 @@
                 <columns>
                     <column label="Description" hflex="4" />
                     <column label="Commentaires" hflex="4"
-                        if="@load(vm.currentUserList)" />
+                        if="${vm.currentUserList}" />
                     <column label="Idée réservée par" hflex="2"
-                        if="@load(vm.currentUserList)" />
+                        if="${vm.currentUserList}" />
                     <column label="Actions" width="100px" />
                 </columns>
                 <template name="noneditable">
@@ -22,10 +22,10 @@
                             <html content="@load(each.wish.descr)" />
                         </div>
 
-                        <div if="@load(vm.currentUserList)">
+                        <div if="${vm.currentUserList}">
                             <html content="@load(each.wish.comment)" />
                         </div>
-                        <label if="@load(vm.currentUserList)"
+                        <label if="${vm.currentUserList}"
                             value="@load(each.wish.reservedBy)" />
                         <hbox>
                             <button image="/img/pencil-small.png"
@@ -40,11 +40,11 @@
                             width="100%"
                             customConfigurationsPath="/config.js" />
 
-                        <ckeditor if="@load(vm.currentUserList)"
+                        <ckeditor if="${vm.currentUserList}"
                             width="100%"
                             value="@load(each.wish.comment) @save(each.wish.comment, before='confirm')"
                             customConfigurationsPath="/config.js" />
-                        <combobox if="@load(vm.currentUserList)"
+                        <combobox if="${vm.currentUserList}"
                             model="@load(vm.users)"
                             selectedItem="@load(each.wish.reservedBy) @save(each.wish.reservedBy, before='confirm')"
                             mold="rounded" width="100%">
