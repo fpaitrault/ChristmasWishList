@@ -30,12 +30,15 @@ public class UserGrid {
 	@Init
 	public void init(@ExecutionArgParam("user") User user) {
 		this.user = user;
-		setCurrentUserList(!user.equals(AuthenticationService.instance().getUserCredential()));
+		User current = AuthenticationService.instance().getUserCredential();
+		setCurrentUserList(!user.equals(current));
 		List<Wish> wishes = this.wishes.readAll();
 
 		for(Wish wish : wishes) {
-			if(wish.getDest() == user)
-				wishStatusList.add(new WishStatus(wish, false));
+            if(wish.getDest() == user) {
+                if(getCurrentUserList() || wish.getAuthor().equals(current))
+                    wishStatusList.add(new WishStatus(wish, false));
+            }
 		}
 
 	}
