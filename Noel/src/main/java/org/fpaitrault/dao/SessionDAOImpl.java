@@ -1,12 +1,15 @@
 package org.fpaitrault.dao;
 
-import org.fpaitrault.dao.GenericDAO;
+import org.fpaitrault.dao.GenericDAOImpl;
+import org.fpaitrault.interfaces.dao.SessionDAO;
 import org.fpaitrault.mdl.Session;
 import org.fpaitrault.mdl.User;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
-public class SessionDAO extends GenericDAO<Session> {
-    public SessionDAO() {
+@Service("sessionDAO")
+public class SessionDAOImpl extends GenericDAOImpl<Session> implements SessionDAO {
+    public SessionDAOImpl() {
     	super(Session.class);
     }
 

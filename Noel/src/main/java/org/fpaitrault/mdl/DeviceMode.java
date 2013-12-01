@@ -1,4 +1,4 @@
-package org.fpaitrault;
+package org.fpaitrault.mdl;
 
 import org.zkoss.zk.ui.event.ClientInfoEvent;
 

@@ -2,13 +2,16 @@ package org.fpaitrault.dao;
 
 import java.util.List;
 
+import org.fpaitrault.interfaces.dao.UserDAO;
 import org.fpaitrault.mdl.User;
+import org.springframework.stereotype.Service;
 
-public class UserDAO extends GenericDAO<User> {
+@Service("userDAO")
+public class UserDAOImpl extends GenericDAOImpl<User> implements UserDAO {
 
     private List<User> userCache = null;
 
-    public UserDAO() {
+    public UserDAOImpl() {
         super(User.class);
         userCache = super.readAll();
     }
