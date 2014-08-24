@@ -13,10 +13,12 @@ public class UserDAOImpl extends GenericDAOImpl<User> implements UserDAO {
 
     public UserDAOImpl() {
         super(User.class);
-        userCache = super.readAll();
     }
 
     public final User readByUserName(final String username) {
+        if(userCache == null) {
+            userCache = super.readAll();
+        }
         for (User user : userCache) {
             if (user.getName().equalsIgnoreCase(username)) {
                 return user;
@@ -27,6 +29,9 @@ public class UserDAOImpl extends GenericDAOImpl<User> implements UserDAO {
 
     @Override
     public final List<User> readAll() {
+        if(userCache == null) {
+            userCache = super.readAll();
+        }
         return userCache;
     }
 

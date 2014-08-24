@@ -1,4 +1,4 @@
-package org.ganaccity.tests;
+package org.ganaccity.tests.viewmdl;
 
 import static org.junit.Assert.*;
 
