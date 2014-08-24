@@ -34,8 +34,11 @@ public class WishDAOImpl extends GenericDAOImpl<Wish> implements WishDAO {
         //Remove wishes that shall not be visible !!!!!!!
         User user = authService.getUserCredential();
         for(Wish wish : res) {
-            if(wish.getDest().equals(user) && !wish.getAuthor().equals(user))
-                toBeRemoved.add(wish);
+            if(wish.getAuthor() != user) {
+                if(wish.getDest() == user) {
+                    toBeRemoved.add(wish);
+                }
+            }
         }
         res.removeAll(toBeRemoved);
         return res;
