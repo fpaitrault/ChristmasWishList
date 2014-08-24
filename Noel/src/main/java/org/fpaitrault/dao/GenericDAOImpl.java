@@ -5,13 +5,11 @@ import java.util.List;
 import org.fpaitrault.interfaces.dao.GenericDAO;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.zkoss.zkplus.hibernate.HibernateUtil;
 
 public class GenericDAOImpl<T extends Object> implements GenericDAO<T> {
-    protected static final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    protected static Session currentSession = null;
+    protected Session currentSession = null;
     private Class<T> type;
     public final Class<T> getType() {
         return type;
@@ -22,7 +20,7 @@ public class GenericDAOImpl<T extends Object> implements GenericDAO<T> {
     
     public final Session getSession() {
         if (currentSession == null) {
-            currentSession = sessionFactory.openSession();
+            currentSession = HibernateUtil.getSessionFactory().openSession();
         }
         return currentSession;
     }

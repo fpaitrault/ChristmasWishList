@@ -1,4 +1,4 @@
-package org.fpaitrault.tests;
+package org.fpaitrault.tests.viewmdl;
 
 import static org.junit.Assert.*;
 
@@ -31,8 +31,8 @@ public class UserGridTest {
 
     UserGrid grid = null;
     private AuthenticationService authService = null;
-    private UserDAO userDAO;
-    private WishDAO wishDAO;
+    private UserDAO userDAO = null;
+    private WishDAO wishDAO = null;
     private List<User> testUsers = null;
     private List<Wish> testWishes = null;
 
@@ -91,11 +91,6 @@ public class UserGridTest {
             assertTrue(selectedWishList.contains(ws.getWish()));
             //Wish is not editable
             assertFalse(ws.getEditStatus());
-            //If dest is current user comment/ReservedBy shall be empty
-            if(isCurrentUser) {
-                assertTrue(ws.getWish().getComment().isEmpty());
-                assertTrue(ws.getWish().getReservedBy()==null);
-            }
         }
 
         PowerMock.verifyAll();
@@ -161,10 +156,5 @@ public class UserGridTest {
 
         PowerMock.verifyAll();
         PowerMock.resetAll();
-    }
-
-    @Test
-    public void testDeleteIdea() {
-        fail("Not yet implemented");
     }
 }

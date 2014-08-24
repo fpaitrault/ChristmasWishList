@@ -1,4 +1,4 @@
-package org.fpaitrault.tests;
+package org.fpaitrault.tests.viewmdl;
 
 import static org.junit.Assert.*;
 
