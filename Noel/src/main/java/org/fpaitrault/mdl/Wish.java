@@ -8,11 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import org.fpaitrault.AuthenticationService;
+import org.fpaitrault.interfaces.AuthenticationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 @Entity(name="wishes")
 public class Wish {
 	
+    @Autowired @Qualifier("authService")
+    private transient AuthenticationService authService = null;
+
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
 	private int index;
@@ -48,13 +53,10 @@ public class Wish {
 		this.descr = descr;
 	}
 	public String getComment() {
-	    User user = AuthenticationService.instance().getUserCredential();
-	    if(user.equals(this.dest))
-	        return "";
 		return comment;
 	}
 	public void setComment(String comment) {
-        User user = AuthenticationService.instance().getUserCredential();
+        User user = authService.getUserCredential();
         if(user.equals(this.dest))
             return;
 		this.comment = comment;
@@ -66,13 +68,10 @@ public class Wish {
 		this.author = author;
 	}
 	public User getReservedBy() {
-        User user = AuthenticationService.instance().getUserCredential();
-        if(user.equals(this.dest))
-            return null;
 		return reservedBy;
 	}
 	public void setReservedBy(User reservedBy) {
-        User user = AuthenticationService.instance().getUserCredential();
+        User user = authService.getUserCredential();
         if(user.equals(this.dest))
             return;
 		this.reservedBy = reservedBy;

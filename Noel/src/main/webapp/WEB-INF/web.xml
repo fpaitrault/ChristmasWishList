@@ -3,7 +3,17 @@
         <description>ZK listener for session cleanup</description>
         <listener-class>org.zkoss.zk.ui.http.HttpSessionListener</listener-class>
     </listener>
- 
+    <!-- Loads the Spring application context configuration -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <!-- For using web scoped bean -->
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener
+        </listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>zkLoader</servlet-name>
         <servlet-class>org.zkoss.zk.ui.http.DHtmlLayoutServlet</servlet-class>

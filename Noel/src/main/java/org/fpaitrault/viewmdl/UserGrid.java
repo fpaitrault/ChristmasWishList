@@ -3,9 +3,9 @@ package org.fpaitrault.viewmdl;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.fpaitrault.AuthenticationService;
-import org.fpaitrault.dao.UserDAO;
-import org.fpaitrault.dao.WishDAO;
+import org.fpaitrault.interfaces.AuthenticationService;
+import org.fpaitrault.interfaces.dao.UserDAO;
+import org.fpaitrault.interfaces.dao.WishDAO;
 import org.fpaitrault.mdl.User;
 import org.fpaitrault.mdl.Wish;
 import org.zkoss.bind.BindUtils;
@@ -15,30 +15,39 @@ import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.select.annotation.VariableResolver;
+import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Messagebox.ClickEvent;
 
+@VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class UserGrid {
 
-	private User user;
-	private boolean currentUserList;
-	private List<WishStatus> wishStatusList=new LinkedList<WishStatus>();
-    private UserDAO users = new UserDAO();
-    private WishDAO wishes = new WishDAO();
+    @WireVariable
+    private AuthenticationService authService = null;
+    @WireVariable
+    private UserDAO userDAO;
+    @WireVariable
+    private WishDAO wishDAO;
+
+    private User user = null;
+	private boolean currentUserList = false;
+	private List<WishStatus> wishStatusList=null;
 
 
 	@Init
 	public void init(@ExecutionArgParam("user") User user) {
 		this.user = user;
-		User current = AuthenticationService.instance().getUserCredential();
+		this.wishStatusList = new LinkedList<WishStatus>();
+		User current = authService.getUserCredential();
 		setCurrentUserList(!user.equals(current));
-		List<Wish> wishes = this.wishes.readAll();
+		List<Wish> wishes = this.wishDAO.readAll();
 
 		for(Wish wish : wishes) {
-            if(wish.getDest() == user) {
-                if(getCurrentUserList() || wish.getAuthor().equals(current))
-                    wishStatusList.add(new WishStatus(wish, false));
-            }
+		    if(wish.getDest() == user) {
+		        if(getCurrentUserList() || wish.getAuthor().equals(current))
+		            wishStatusList.add(new WishStatus(wish, false));
+		    }
 		}
 
 	}
@@ -48,7 +57,7 @@ public class UserGrid {
 	}
 	
 	public List<User> getUsers() {
-		return users.readAll();
+		return userDAO.readAll();
 	}
 
 	@Command
@@ -60,9 +69,9 @@ public class UserGrid {
 	@Command
     @NotifyChange("wishList")
 	public void addIdea() {
-		Wish wish = new Wish(AuthenticationService.instance().getUserCredential(),
+		Wish wish = new Wish(authService.getUserCredential(),
 		        "", "", user, null);
-		this.wishes.create(wish);
+		this.wishDAO.create(wish);
 		wishStatusList.add(new WishStatus(wish, true));
 	}
 	
@@ -70,7 +79,7 @@ public class UserGrid {
 	public void confirm(@BindingParam("wishStatus") WishStatus ws) {
 		changeEditStatus(ws);
 		// Save wish in database
-		wishes.update(ws.getWish());
+		wishDAO.update(ws.getWish());
 	}
 
     @Command
@@ -79,7 +88,7 @@ public class UserGrid {
         EventListener<ClickEvent> clickListener = new EventListener<Messagebox.ClickEvent>() {
             public void onEvent(ClickEvent event) throws Exception {
                 if(Messagebox.Button.YES.equals(event.getButton())) {
-                    wishes.delete(ws.getWish());
+                    wishDAO.delete(ws.getWish());
                     wishStatusList.remove(ws);
                     refreshRowTemplate(ws);
                 }
