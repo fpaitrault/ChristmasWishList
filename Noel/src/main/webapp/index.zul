@@ -1,7 +1,10 @@
 <?page title="Liste de noël"?>
 <?init class="org.ganaccity.AuthenticationInit"?>
 <?script type="text/javascript" src="/snowfall.js"?>
-<window border="none" height="100%" width="100%"
+<?meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"?>
+<?meta name="apple-mobile-web-app-capable" content="yes"?>
+<?meta name="apple-mobile-web-app-status-bar-style" content="black"?>
+<window id="win" border="none" height="100%" width="100%"
     apply="org.zkoss.bind.BindComposer"
     viewModel="@id('vm') @init('org.ganaccity.viewmdl.MainWindow')"
     style="
@@ -9,10 +12,18 @@
     background-position: bottom left;
     background-repeat: repeat-x;
     cursor: url(http://i47.tinypic.com/2hofe52.jpg), auto;
-    ">
-    <script type="text/javascript">
+    "
+    onClientInfo='@command("clientInfoChanged", evt=event)'>
+    <script type="text/javascript" >
         snowFall.snow(document.getElementsByTagName("body"), {shadow:
         true, maxSize: 10, round: true});
+        window.addEventListener("load",function() {
+    // Set a timeout...
+    setTimeout(function(){
+        // Hide the address bar!
+        window.scrollTo(0, 1);
+    }, 0);
+});
     </script>
     <borderlayout width="100%" style="background: transparent;">
         <north height="128px"
@@ -20,8 +31,8 @@
     background-image: url('http://florent.paitrault.free.fr/noel1.jpg');
     background-position: bottom left;
     background-repeat: repeat-x;
-        ">
-            <menubar>
+        " visible="@bind(vm.deviceMode.phone?'false':'true')">
+            <menubar visible="@bind(vm.deviceMode.phone?'false':'true')">
                 <menuitem label="Déconnexion"
                     onClick="@command('logout')" />
                 <menuitem disabled="true" label="Bienvenue ${vm.user}" />
