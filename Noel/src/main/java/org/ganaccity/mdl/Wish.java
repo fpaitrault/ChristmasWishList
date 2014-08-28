@@ -1,5 +1,7 @@
 package org.ganaccity.mdl;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,6 +36,9 @@ public class Wish {
     @ManyToOne
     @JoinColumn(name = "reserved")
 	private User reservedBy;
+    
+    @Column(name = "updated")
+    private Date updated;
 	
     public Wish() {
         
@@ -51,15 +56,14 @@ public class Wish {
 	}
 	public void setDescr(String descr) {
 		this.descr = descr;
+        this.updated = new Date();
 	}
 	public String getComment() {
 		return comment;
 	}
 	public void setComment(String comment) {
-        User user = authService.getUserCredential();
-        if(user.equals(this.dest))
-            return;
 		this.comment = comment;
+		this.updated = new Date();
 	}
 	public User getAuthor() {
 		return author;
@@ -71,10 +75,8 @@ public class Wish {
 		return reservedBy;
 	}
 	public void setReservedBy(User reservedBy) {
-        User user = authService.getUserCredential();
-        if(user.equals(this.dest))
-            return;
 		this.reservedBy = reservedBy;
+        this.updated = new Date();
 	}
 	public User getDest() {
 		return dest;
@@ -88,4 +90,8 @@ public class Wish {
 	public void setIndex(int index) {
 		this.index = index;
 	}
+
+    public Date getUpdated() {
+        return updated;
+    }
 }
