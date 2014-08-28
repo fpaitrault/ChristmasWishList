@@ -6,7 +6,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://192.168.0.20:3306/christmas_valid?autoReconnect=true</property>
+        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/christmas?autoReconnect=true</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">tigrou</property>
         <property name="hibernate.connection.pool_size">10</property>
@@ -22,9 +22,11 @@
         <property name="hibernate.c3p0.min_size">10</property><!-- Taille minimale du pool -->
         <property name="hibernate.c3p0.timeout">0</property><!-- seconds / 0 =jamais-->
         <property name="hibernate.c3p0.max_statements">0</property><!-- Taille du cache de statements de C3P0. 0 = désactive le cache -->
+        <property name="current_session_context_class">thread</property>
 
         <mapping class="org.fpaitrault.mdl.Session"/>
         <mapping class="org.fpaitrault.mdl.User"/>
         <mapping class="org.fpaitrault.mdl.Wish"/>
+        
     </session-factory>
 </hibernate-configuration>
