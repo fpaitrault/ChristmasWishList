@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
            http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
            http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
- 
+
     <!-- Scans for application @Components to deploy -->
     <context:component-scan base-package="org.ganaccity" />
- 
+
+    <bean name="runMeJob"
+        class="org.springframework.scheduling.quartz.JobDetailBean">
+
+        <property name="jobClass" value="org.ganaccity.PeriodicTask" />
+
+    </bean>
+    <!-- Simple Trigger, run every 5 seconds -->
+    <bean id="simpleTrigger"
+        class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+
+        <property name="jobDetail" ref="runMeJob" />
+        <property name="repeatInterval" value="5000" />
+        <property name="startDelay" value="1000" />
+
+    </bean>
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <ref bean="runMeJob" />
+            </list>
+        </property>
+
+        <property name="triggers">
+            <list>
+                <ref bean="simpleTrigger" />
+            </list>
+        </property>
+    </bean>
 </beans>
