@@ -4,7 +4,6 @@
     <groupId>Noel</groupId>
     <artifactId>Noel</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
     <repositories>
         <repository>
             <id>java repository</id>
@@ -13,7 +12,7 @@
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
                 <checksumPolicy>error</checksumPolicy>
-          </releases>
+            </releases>
         </repository>
         <repository>
             <id>zk repository</id>
@@ -22,7 +21,7 @@
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
                 <checksumPolicy>error</checksumPolicy>
-          </releases>
+            </releases>
         </repository>
         <repository>
             <id>ZK EVAL</id>
@@ -32,9 +31,9 @@
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
                 <checksumPolicy>error</checksumPolicy>
-          </releases>
+            </releases>
         </repository>
-        
+
     </repositories>
     <build>
         <directory>${project.basedir}/target</directory>
@@ -53,6 +52,11 @@
                     <source>1.6</source>
                     <target>1.6</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.sf.alchim</groupId>
+                <artifactId>winstone-maven-plugin</artifactId>
+                <version>1.2</version>
             </plugin>
         </plugins>
     </build>
@@ -84,10 +88,6 @@
         <dependency>
             <groupId>org.zkoss.zk</groupId>
             <artifactId>zhtml</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlets</artifactId>
         </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -186,6 +186,10 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
         </dependency>
+        <dependency>
+            <groupId>net.sourceforge.winstone</groupId>
+            <artifactId>winstone-lite</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -213,11 +217,6 @@
                 <groupId>org.zkoss.zk</groupId>
                 <artifactId>zhtml</artifactId>
                 <version>6.5.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-servlets</artifactId>
-                <version>8.0.1.v20110908</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.persistence</groupId>
@@ -344,6 +343,12 @@
                 <artifactId>spring-tx</artifactId>
                 <version>3.0.5.RELEASE</version>
             </dependency>
+            <dependency>
+                <groupId>net.sourceforge.winstone</groupId>
+                <artifactId>winstone-lite</artifactId>
+                <version>0.9.10</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+    <packaging>war</packaging>
 </project>
