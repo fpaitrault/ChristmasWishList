@@ -20,7 +20,7 @@
         class="org.springframework.scheduling.quartz.SimpleTriggerBean">
 
         <property name="jobDetail" ref="runMeJob" />
-        <property name="repeatInterval" value="50000" />
+        <property name="repeatInterval" value="864000000" />
         <property name="startDelay" value="1000" />
 
     </bean>

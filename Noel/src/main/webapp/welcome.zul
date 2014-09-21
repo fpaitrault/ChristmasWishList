@@ -1,4 +1,8 @@
 <?page title="" contentType="text/html;charset=UTF-8"?>
 <zk>
-<iframe scrolling="auto" src="welcome.html" width="100%" height="100%"></iframe>
+<vlayout width="100%" height="100%" style="border:0px; overflow:auto;"
+ apply="org.zkoss.bind.BindComposer"
+        viewModel="@id('vm') @init('org.fpaitrault.viewmdl.Welcome')">
+    <html content="@load(vm.message)"/>
+</vlayout>
 </zk>

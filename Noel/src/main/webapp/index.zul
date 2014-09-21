@@ -1,9 +1,13 @@
 <?page title="Liste de noël"?>
 <?init class="org.fpaitrault.AuthenticationInit"?>
-<?script type="text/javascript" src="/snowfall.js"?>
+<!-- ?script type="text/javascript" src="/snowfall.js"?-->
 <?meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"?>
 <?meta name="apple-mobile-web-app-capable" content="yes"?>
 <?meta name="apple-mobile-web-app-status-bar-style" content="black"?>
+<zk>
+<style>
+    body { padding: 0px; }
+</style>
 <window id="win" border="none" height="100%" width="100%"
     apply="org.zkoss.bind.BindComposer"
     viewModel="@id('vm') @init('org.fpaitrault.viewmdl.MainWindow')"
@@ -26,9 +30,9 @@
 });
     </script>
     <borderlayout width="100%" style="background: transparent;">
-        <north height="128px"
+        <north height="150px"
             style=" 
-    background-image: url('http://florent.paitrault.free.fr/noel1.jpg');
+    background-image: url('http://florent.paitrault.free.fr/noel_2014/banner_tab.png');
     background-position: bottom left;
     background-repeat: repeat-x;
         " visible="@bind(vm.deviceMode.phone?'false':'true')">
@@ -42,7 +46,7 @@
             <tabbox height="100%" style="background: transparent;">
                 <tabs children="@load(vm.users)" >
                     <template name="children">
-                        <tab>Liste de ${each}</tab>
+                        <tab label="Liste de ${each}"></tab>
                     </template>
                 </tabs>
                 <tabpanels children="@load(vm.users)">
@@ -56,3 +60,4 @@
         </center>
     </borderlayout>
 </window>
+</zk>
