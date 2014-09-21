@@ -50,7 +50,7 @@ public class MainWindowTest {
         //Load reference list
         testUsers = new ArrayList<User>();
         for(int i=0;i<TEST_PASSWORD.length;i++) {
-            testUsers.add(new User(TEST_USER_NAME[i], DigestUtils.md5Hex(TEST_PASSWORD[i])));
+            testUsers.add(new User(TEST_USER_NAME[i], DigestUtils.md5Hex(TEST_PASSWORD[i]),i));
         }
     }
 

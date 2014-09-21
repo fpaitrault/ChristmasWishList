@@ -33,9 +33,10 @@ public class User {
         
     }
     
-	public User(String name, String hash) {
+	public User(String name, String hash, int index) {
 		this.name = name;
 		this.hash = hash;
+		this.index = index;
 	}
 
 	public String getName() {

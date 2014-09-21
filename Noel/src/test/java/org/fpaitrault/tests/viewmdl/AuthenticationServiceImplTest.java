@@ -55,7 +55,7 @@ public class AuthenticationServiceImplTest {
         //Load reference list
         testUsers = new ArrayList<User>();
         for(int i=0;i<TEST_PASSWORD.length;i++) {
-            testUsers.add(new User(TEST_USER_NAME[i], DigestUtils.md5Hex(TEST_PASSWORD[i])));
+            testUsers.add(new User(TEST_USER_NAME[i], DigestUtils.md5Hex(TEST_PASSWORD[i]),i));
         }
     }
 
@@ -96,9 +96,9 @@ public class AuthenticationServiceImplTest {
     private void testIsFirstLogin(boolean isfirst) {
         User user = null;
         if(isfirst) {
-            user = new User(TEST_USER_NAME[0], "");
+            user = new User(TEST_USER_NAME[0], "", 0);
         } else {
-            user = new User(TEST_USER_NAME[0], DigestUtils.md5Hex(TEST_PASSWORD[0]));
+            user = new User(TEST_USER_NAME[0], DigestUtils.md5Hex(TEST_PASSWORD[0]), 1);
         }
         EasyMock.expect(users.readByUserName(TEST_USER_NAME[0])).andReturn(user);
         

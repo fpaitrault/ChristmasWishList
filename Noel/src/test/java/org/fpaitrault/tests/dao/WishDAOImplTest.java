@@ -51,7 +51,10 @@ public class WishDAOImplTest {
             for(Wish readWish : readWishes) {
                 //Don't show wish for current user not written by current user
                 if(readWish.getAuthor() != user) {
-                    assertNotSame(user, readWish.getDest());
+                    assertNotSame("User: "+user.getName()+" Dest: "+readWish.getDest(),user, readWish.getDest());
+                    if(user != readWish.getDest()) {
+                        System.out.println("");
+                    }
                 }
             }
             
@@ -63,9 +66,9 @@ public class WishDAOImplTest {
 
     private List<User> createUsers() {
         List<User> users = new LinkedList<User>();
-        users.add(new User("Florent", "toto"));
-        users.add(new User("Maeva", "test"));
-        users.add(new User("Howard", "titi"));
+        users.add(new User("Florent", "toto",0));
+        users.add(new User("Maeva", "test",1));
+        users.add(new User("Howard", "titi",2));
         return users;
     }
 
