@@ -50,6 +50,7 @@ public class Wish {
 		this.author = author;
 		this.dest = dest;
 		this.reservedBy = reservedBy;
+		this.updated = new Date();
 	}
 	public String getDescr() {
 		return descr;
