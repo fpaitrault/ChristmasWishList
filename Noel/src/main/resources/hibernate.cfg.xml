@@ -27,6 +27,7 @@
         <mapping class="org.ganaccity.mdl.Session"/>
         <mapping class="org.ganaccity.mdl.User"/>
         <mapping class="org.ganaccity.mdl.Wish"/>
+        <mapping class="org.ganaccity.mdl.Setting"/>
         
     </session-factory>
 </hibernate-configuration>
