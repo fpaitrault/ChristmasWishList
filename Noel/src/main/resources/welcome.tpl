@@ -1,4 +1,16 @@
 <html>
+<style>
+    .count_down {
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            margin-left: -121px;
+    }
+    .count_down_container { 
+        position: relative;
+        height: 150px; 
+    }
+</style>
     <p style="text-align: center;">
         <span style="color: rgb(4, 151, 167);">
             <span style="font-size: 24px;">
@@ -8,19 +20,13 @@
             </span>
         </span>
     </p>
-    <p style="text-align: center;">
-        <span style="color: rgb(4, 151, 167);">
-            <span style="font-size: 24px;">
-                <span style="font-family: 'comic sans ms', cursive;">
-                    <strong>
-                        <img alt=""
-                            src="http://ekladata.com/5f9BFclYpWE7ledgnushB_4ORco.png"
-                            style="width: 197px; height: 150px;" />
-                    </strong>
-                </span>
-            </span>
-        </span>
-    </p>
+    <div align="center">
+        <div class="count_down_container">
+		  <img class="count_down" src="http://florent.paitrault.free.fr/noel_2014/compteur_red.png" />
+		  <img class="count_down" src="http://florent.paitrault.free.fr/noel_2014/d${countdown_u}.png" />
+          <img class="count_down" src="http://florent.paitrault.free.fr/noel_2014/g${countdown_d}.png" />
+		</div>
+    </div>
     <p>&nbsp;</p>
     <p>
         <span style="font-size: 14px;">

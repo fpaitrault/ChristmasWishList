@@ -6,9 +6,9 @@
         <div align="center">En direct de l&apos;Atelier des Lutins du P&egrave;re No&euml;l</div>
   </h1>
   <div align="center">
-        <img src="http://florent.paitrault.free.fr/noel_2014/ball.jpg"/>
+        <p style="font-size: 250%;"><img src="http://florent.paitrault.free.fr/noel_2014/ball.jpg"/>
         J -${countdown} avant No&euml;l
-        <img src="http://florent.paitrault.free.fr/noel_2014/ball.jpg"/>
+        <img src="http://florent.paitrault.free.fr/noel_2014/ball.jpg"/></p>
         <br/><br/>
         Cher lutin ${user},
         <br/><br/>
