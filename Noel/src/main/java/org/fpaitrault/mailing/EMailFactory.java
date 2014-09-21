@@ -2,6 +2,10 @@ package org.fpaitrault.mailing;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +21,8 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 
 public class EMailFactory {
+    protected static final SimpleDateFormat dateFormat = 
+            new SimpleDateFormat("dd/MM/yyyy");
     public static String createEmail(User user, List<Wish> wishes) throws IOException, TemplateException {
 
         Configuration cfg = new Configuration();
@@ -33,8 +39,8 @@ public class EMailFactory {
         return writer.toString();
     }
 
-    private static Map<String,List<Wish>> createModel(User user, List<Wish> wishes) {
-        Map<String,List<Wish>> model = new HashMap<String,List<Wish>>();
+    private static Map<String,Object> createModel(User user, List<Wish> wishes) {
+        Map<String,Object> model = new HashMap<String,Object>();
         List<Wish> resWishes = new LinkedList<Wish>();
         for(Wish wish : wishes) {
             //Remove wishes that are for current user
@@ -43,6 +49,15 @@ public class EMailFactory {
             }
         }
         model.put("wishes", resWishes);
+        
+        //Calculate countdown
+        Date today = Calendar.getInstance().getTime();
+        Calendar cal = GregorianCalendar.getInstance();
+        cal.set(today.getYear()+1900, Calendar.DECEMBER, 25);
+        Date christmas = cal.getTime();
+        long diff = christmas.getTime() - today.getTime();
+        model.put("countdown",  Long.toString(diff/(1000*60*60*24)));
+        model.put("user",  user.getName());
         return model;
     }
 }
