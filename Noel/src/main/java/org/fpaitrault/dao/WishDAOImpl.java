@@ -48,7 +48,7 @@ public class WishDAOImpl extends GenericDAOImpl<Wish> implements WishDAO {
             res = query.list();
         }
         
-        return cleanupWishes(res, toBeRemoved);
+        return res;
     }
 
     private Date subtractDay(Date date) {

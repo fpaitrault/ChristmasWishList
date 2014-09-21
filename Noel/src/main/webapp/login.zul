@@ -1,15 +1,23 @@
 <zk>
     <style>
-        body { background-color: #dcf6ff; } .z-grid-embedded-cnt {
-        background-color: #dcf6ff; }
+        body { background-color: #6dc9f3; } .z-grid-embedded-cnt {
+        background-color: #6dc9f3; }
+        .login {
+            display: inline;
+            position: absolute;
+            top: 400px;
+            width: 100%;
+            margin-left: -40px;
+        }
     </style>
     <window apply="org.zkoss.bind.BindComposer"
         viewModel="@id('vm') @init('org.fpaitrault.viewmdl.Login', mode='mock')"
-        border="none"
-        onClientInfo='@command("clientInfoChanged", evt=event)'>
+        border="none">
         <div align="center">
-            <image src="img/accueil.png" visible="@load(vm.deviceMode.phone?'false':'true')"/>
-            <grid width="210pt">
+                <image src="img/accueil.png"/>
+        </div>
+        <div class="login" align="center">
+            <grid width="190pt">
                 <rows>
                     <row>
                         Nom utilisateur
@@ -25,8 +33,7 @@
                                 value="@bind(vm.password)" onOK="@command('login')" />
                         </div>
                     </row>
-                    <row>
-                        <span />
+                    <row spans="2">
                         <div align="center">
                             <button label="Valider"
                                 onClick="@command('login')" />
@@ -35,7 +42,6 @@
 
                 </rows>
             </grid>
-            <image src="img/accueil2.png" visible="@load(vm.deviceMode.phone?'false':'true')"/>
         </div>
         <window mode="modal" title="Première connexion" width="300px"
                 visible="@bind(vm.firstLogin)">
