@@ -87,8 +87,8 @@ public class UserDAOImplTest {
 
     private List<User> createUsers() {
         List<User> users = new LinkedList<User>();
-        users.add(new User("Florent", "toto"));
-        users.add(new User("Maeva", "test"));
+        users.add(new User("Florent", "toto",0));
+        users.add(new User("Maeva", "test",1));
         return users;
     }
 }

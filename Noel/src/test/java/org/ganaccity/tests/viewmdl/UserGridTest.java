@@ -50,7 +50,7 @@ public class UserGridTest {
         testUsers = new ArrayList<User>();
         testWishes = new ArrayList<Wish>();
         for(int i=0;i<TEST_USER_NAME.length;i++) {
-            User user = new User(TEST_USER_NAME[i], DigestUtils.md5Hex(TEST_PASSWORD[i]));
+            User user = new User(TEST_USER_NAME[i], DigestUtils.md5Hex(TEST_PASSWORD[i]),i);
             user.setIndex(i);
             testUsers.add(user);
         }
