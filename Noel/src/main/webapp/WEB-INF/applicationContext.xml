@@ -13,15 +13,14 @@
     <bean name="runMeJob"
         class="org.springframework.scheduling.quartz.JobDetailBean">
 
-        <property name="jobClass" value="org.ganaccity.PeriodicTask" />
+        <property name="jobClass" value="org.ganaccity.mailing.MailingTask" />
 
     </bean>
-    <!-- Simple Trigger, run every 5 seconds -->
     <bean id="simpleTrigger"
         class="org.springframework.scheduling.quartz.SimpleTriggerBean">
 
         <property name="jobDetail" ref="runMeJob" />
-        <property name="repeatInterval" value="5000" />
+        <property name="repeatInterval" value="50000" />
         <property name="startDelay" value="1000" />
 
     </bean>
@@ -37,5 +36,6 @@
                 <ref bean="simpleTrigger" />
             </list>
         </property>
+        <property name="applicationContextSchedulerContextKey"><value>applicationContext</value></property>
     </bean>
 </beans>
