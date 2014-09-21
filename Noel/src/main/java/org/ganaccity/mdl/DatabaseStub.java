@@ -19,8 +19,8 @@ public class DatabaseStub {
 		users = new LinkedList<User>();
 		wishes = new LinkedList<Wish>();
 		
-		User florent = new User("Florent", DigestUtils.md5Hex("tigrou"));
-		User maeva = new User("Maeva", DigestUtils.md5Hex("tigrou"));
+		User florent = new User("Florent", DigestUtils.md5Hex("tigrou"),0);
+		User maeva = new User("Maeva", DigestUtils.md5Hex("tigrou"),1);
 		users.add(florent);
 		users.add(maeva);
 		
