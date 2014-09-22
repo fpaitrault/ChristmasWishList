@@ -44,12 +44,12 @@
         </north>
         <center style="background: transparent;">
             <tabbox height="100%" style="background: transparent;">
-                <tabs children="@load(vm.users)" >
+                <tabs children="@load(vm.friends)" >
                     <template name="children">
                         <tab label="Liste de ${each}"></tab>
                     </template>
                 </tabs>
-                <tabpanels children="@load(vm.users)">
+                <tabpanels children="@load(vm.friends)">
                     <template name="children">
                         <tabpanel>
                             <include user="${each}" src="${each.name eq 'Noel' ? 'welcome.zul':'usergrid.zul'}" />
