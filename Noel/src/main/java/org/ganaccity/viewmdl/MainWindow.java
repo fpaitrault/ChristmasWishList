@@ -32,6 +32,10 @@ public class MainWindow {
     public List<User> getUsers() {
         return userDAO.readAll();
     }
+    
+    public List<User> getFriends() {
+        return user.getFriends();
+    }
 
     @Command
     public void logout() {
