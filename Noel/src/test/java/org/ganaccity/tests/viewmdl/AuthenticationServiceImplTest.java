@@ -18,17 +18,20 @@ import org.ganaccity.mdl.Session;
 import org.ganaccity.mdl.User;
 import org.ganaccity.viewmdl.Login;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.easymock.PowerMock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.modules.junit4.rule.PowerMockRule;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.zkoss.zk.ui.Executions;
 
-@RunWith(PowerMockRunner.class)
 @PrepareForTest( { AuthenticationServiceImpl.class})
 public class AuthenticationServiceImplTest {
+    @Rule
+    public PowerMockRule rule = new PowerMockRule();
     private static final String INCORRECT_PASSWORD = "INCORRECT";
     private static final String [] TEST_PASSWORD = {"testPassword", "testPassword 2"};
     private static final String [] TEST_USER_NAME = {"testUser", "testUser 2"};

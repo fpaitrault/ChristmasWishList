@@ -23,7 +23,9 @@ public class User {
     @Column(name="id")
 	private int index;
     @Column
-	private String name;
+	private String username;
+    @Column
+    private String name;
     @Column
 	private String hash;
     @Column
@@ -54,11 +56,19 @@ public class User {
         
     }
     
-	public User(String name, String hash, int index) {
-		this.name = name;
+	public User(String username, String hash, int index) {
+		this.username = username;
 		this.hash = hash;
 		this.index = index;
 	}
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUserName(String username) {
+        this.username = username;
+    }
 
 	public String getName() {
 		return name;
