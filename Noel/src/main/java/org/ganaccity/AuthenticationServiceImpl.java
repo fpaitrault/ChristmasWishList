@@ -30,7 +30,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	public boolean login(String name, String password) {
 	    List<User> userList = users.readAll();
 		for(User user : userList) {
-			if(user.getName().equalsIgnoreCase(name) &&
+			if(user.getUsername().equalsIgnoreCase(name) &&
 					user.getHash().equals(DigestUtils.md5Hex(password))) {
 			       //Store identifiers into session database
 		        UUID uuid = UUID.randomUUID();

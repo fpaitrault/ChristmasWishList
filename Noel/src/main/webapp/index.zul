@@ -52,7 +52,7 @@
                 <tabpanels children="@load(vm.friends)">
                     <template name="children">
                         <tabpanel>
-                            <include user="${each}" src="${each.name eq 'Noel' ? 'welcome.zul':'usergrid.zul'}" />
+                            <include user="${each}" src="${each.username eq 'Noel' ? 'welcome.zul':'usergrid.zul'}" />
                         </tabpanel>
                     </template>
                 </tabpanels>
