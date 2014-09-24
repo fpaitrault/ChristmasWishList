@@ -20,7 +20,7 @@ public class UserDAOImpl extends GenericDAOImpl<User> implements UserDAO {
             userCache = super.readAll();
         }
         for (User user : userCache) {
-            if (user.getName().equalsIgnoreCase(username)) {
+            if (user.getUsername().equalsIgnoreCase(username)) {
                 return user;
             }
         }

@@ -6,19 +6,21 @@ import org.easymock.EasyMock;
 import org.fpaitrault.interfaces.AuthenticationService;
 import org.fpaitrault.viewmdl.Login;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.easymock.PowerMock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.modules.junit4.rule.PowerMockRule;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.zkoss.zk.ui.Executions;
 
 
-@RunWith(PowerMockRunner.class)
 @PrepareForTest( { Login.class , Executions.class})
 public class LoginTest {
-
+    @Rule
+    public PowerMockRule rule = new PowerMockRule();
     private static final String INCORRECT_PASSWORD = "INCORRECT";
     private static final String TEST_PASSWORD = "testPassword";
     private static final String TEST_USER_NAME = "testUser";
@@ -104,7 +106,7 @@ public class LoginTest {
         login.setPassword(TEST_PASSWORD);
         login.setPasswdConfirm(INCORRECT_PASSWORD);
         login.firstLogin();
-        assertTrue(login.getPasswdErrorMsg().length()!=0);
+        assertNotEquals(login.getPasswdErrorMsg().length(), 0);
         
         PowerMock.verifyAll();
         PowerMock.resetAll();

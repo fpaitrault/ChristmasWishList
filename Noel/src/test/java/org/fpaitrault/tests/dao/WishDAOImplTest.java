@@ -51,7 +51,7 @@ public class WishDAOImplTest {
             for(Wish readWish : readWishes) {
                 //Don't show wish for current user not written by current user
                 if(readWish.getAuthor() != user) {
-                    assertNotSame("User: "+user.getName()+" Dest: "+readWish.getDest(),user, readWish.getDest());
+                    assertNotSame("User: "+user.getUsername()+" Dest: "+readWish.getDest(),user, readWish.getDest());
                     if(user != readWish.getDest()) {
                         System.out.println("");
                     }

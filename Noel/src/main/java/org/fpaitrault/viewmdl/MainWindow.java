@@ -1,5 +1,6 @@
 package org.fpaitrault.viewmdl;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.fpaitrault.interfaces.AuthenticationService;
@@ -34,7 +35,9 @@ public class MainWindow {
     }
     
     public List<User> getFriends() {
-        return user.getFriends();
+        List<User> res = new LinkedList<User>(user.getFriends());
+        res.add(user);
+        return res;
     }
 
     @Command

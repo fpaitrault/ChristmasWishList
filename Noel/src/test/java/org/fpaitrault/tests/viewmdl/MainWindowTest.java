@@ -16,17 +16,20 @@ import org.fpaitrault.mdl.User;
 import org.fpaitrault.viewmdl.Login;
 import org.fpaitrault.viewmdl.MainWindow;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.api.easymock.PowerMock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.modules.junit4.rule.PowerMockRule;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.zkoss.zk.ui.Executions;
 
-@RunWith(PowerMockRunner.class)
 @PrepareForTest( { MainWindow.class , Executions.class})
 public class MainWindowTest {
+    @Rule
+    public PowerMockRule rule = new PowerMockRule();
 
     private static final String INCORRECT_PASSWORD = "INCORRECT";
     private static final String [] TEST_PASSWORD = {"testPassword", "testPassword 2"};

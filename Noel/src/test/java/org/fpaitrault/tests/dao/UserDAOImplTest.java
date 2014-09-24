@@ -21,7 +21,6 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.springframework.test.util.ReflectionTestUtils;
 
-@RunWith(PowerMockRunner.class)
 @PrepareForTest( { UserDAOImpl.class} )
 public class UserDAOImplTest {
     
@@ -46,7 +45,7 @@ public class UserDAOImplTest {
         
         User ok = userDao.readByUserName("Florent");
         assertNotNull(ok);
-        assertEquals("Florent", ok.getName());
+        assertEquals("Florent", ok.getUsername());
         assertEquals("toto", ok.getHash());
         
         User notOk = userDao.readByUserName("Unknown");
@@ -71,8 +70,8 @@ public class UserDAOImplTest {
         for(User user : users) {
             boolean found = false;
             for(User readUser : readUsers) {
-                if(user.getName().equals(readUser.getName())) {
-                    assertEquals(user.getName(), readUser.getName());
+                if(user.getUsername().equals(readUser.getUsername())) {
+                    assertEquals(user.getUsername(), readUser.getUsername());
                     assertEquals(user.getHash(), readUser.getHash());
                     found = true;
                 }
