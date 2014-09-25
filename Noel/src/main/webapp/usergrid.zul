@@ -25,8 +25,9 @@
                         <div if="${vm.currentUserList}">
                             <html content="@load(each.wish.comment)" />
                         </div>
-                        <label if="${vm.currentUserList}"
-                            value="@load(each.wish.reservedBy)" />
+                        <div if="${vm.currentUserList}">
+                            <image if="${each.wish.reservedBy!=null}" src="img/ticket_${each.wish.reservedBy.index}.png" height="75px"/>
+                        </div>
                         <hbox>
                             <button image="/img/pencil-small.png"
                                 onClick="@command('changeEditStatus', wishStatus=each)" />
