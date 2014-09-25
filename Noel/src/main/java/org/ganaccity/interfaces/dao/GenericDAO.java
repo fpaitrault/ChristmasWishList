@@ -12,7 +12,5 @@ public interface GenericDAO<T extends Object> {
     
     void update(T o);
     
-    void merge(T o);
-    
     void delete(T o);
 }

@@ -23,7 +23,13 @@ import freemarker.template.TemplateExceptionHandler;
 public class EMailFactory {
     protected static final SimpleDateFormat dateFormat = 
             new SimpleDateFormat("dd/MM/yyyy");
-    public static String createEmail(User user, List<Wish> wishes) throws IOException, TemplateException {
+    protected Calendar calendar;
+
+    public EMailFactory() {
+        calendar = Calendar.getInstance();
+    }
+    
+    public String createEmail(User user, List<Wish> wishes) throws IOException, TemplateException {
 
         Configuration cfg = new Configuration();
         cfg.setClassForTemplateLoading(EMailFactory.class,"/");
@@ -39,7 +45,7 @@ public class EMailFactory {
         return writer.toString();
     }
 
-    private static Map<String,Object> createModel(User user, List<Wish> wishes) {
+    public Map<String,Object> createModel(User user, List<Wish> wishes) {
         Map<String,Object> model = new HashMap<String,Object>();
         List<Wish> resWishes = new LinkedList<Wish>();
         for(Wish wish : wishes) {
@@ -51,7 +57,7 @@ public class EMailFactory {
         model.put("wishes", resWishes);
         
         //Calculate countdown
-        Date today = Calendar.getInstance().getTime();
+        Date today = calendar.getTime();
         Calendar cal = GregorianCalendar.getInstance();
         cal.set(today.getYear()+1900, Calendar.DECEMBER, 25);
         Date christmas = cal.getTime();

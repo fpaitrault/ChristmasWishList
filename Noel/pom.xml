@@ -141,10 +141,6 @@
             <artifactId>zkmax</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.zkoss.zkforge</groupId>
-            <artifactId>ckez</artifactId>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
@@ -200,6 +196,10 @@
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-junit4-rule-agent</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.zkoss.zkforge</groupId>
+            <artifactId>ckez</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -300,11 +300,6 @@
                 <version>6.5.0</version>
             </dependency>
             <dependency>
-                <groupId>org.zkoss.zkforge</groupId>
-                <artifactId>ckez</artifactId>
-                <version>3.6.0.0</version>
-            </dependency>
-            <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>4.11</version>
@@ -370,6 +365,11 @@
                     powermock-module-junit4-rule-agent
                 </artifactId>
                 <version>1.5.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.zkoss.zkforge</groupId>
+                <artifactId>ckez</artifactId>
+                <version>3.6.0.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
