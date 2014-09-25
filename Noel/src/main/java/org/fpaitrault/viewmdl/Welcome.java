@@ -6,21 +6,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.fpaitrault.interfaces.AuthenticationService;
-import org.fpaitrault.interfaces.dao.UserDAO;
 import org.fpaitrault.mailing.EMailFactory;
-import org.fpaitrault.mdl.DeviceMode;
-import org.fpaitrault.mdl.User;
-import org.zkoss.bind.annotation.BindingParam;
-import org.zkoss.bind.annotation.Command;
-import org.zkoss.bind.annotation.NotifyChange;
-import org.zkoss.zk.ui.Executions;
-import org.zkoss.zk.ui.event.ClientInfoEvent;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
-import org.zkoss.zk.ui.select.annotation.WireVariable;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;

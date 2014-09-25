@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.fpaitrault.interfaces.AuthenticationService;
 import org.fpaitrault.interfaces.dao.UserDAO;
-import org.fpaitrault.mdl.DeviceMode;
 import org.fpaitrault.mdl.User;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -24,12 +23,7 @@ public class MainWindow {
     private UserDAO userDAO;
     
     private User user = null;
-    private DeviceMode deviceMode = null;
 
-    public MainWindow() {
-        deviceMode = new DeviceMode();
-    }
-    
     public List<User> getUsers() {
         return userDAO.readAll();
     }
@@ -51,16 +45,6 @@ public class MainWindow {
             user = authService.getUserCredential(); 
         }
         return user;
-    }
-    
-    @Command
-    @NotifyChange("*")
-    public void clientInfoChanged(@BindingParam("evt") ClientInfoEvent event){
-            deviceMode.setClientInfo((ClientInfoEvent)event);
-    }
-    
-    public DeviceMode getDeviceMode() {
-        return deviceMode;
     }
 
 }

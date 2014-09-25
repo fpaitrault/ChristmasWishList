@@ -61,13 +61,6 @@ public class GenericDAOImpl<T extends Object> implements GenericDAO<T> {
             transact.commit();
         }
     }
-    public final void merge(final T o) {
-        synchronized (getSession()) {
-            Transaction transact = getSession().beginTransaction();
-            getSession().merge(o);
-            transact.commit();
-        }
-    }
     public final void delete(final T o) {
         synchronized (getSession()) {
             Transaction transact = getSession().beginTransaction();
