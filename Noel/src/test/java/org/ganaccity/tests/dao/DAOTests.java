@@ -7,7 +7,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({ WishDAOImplTest.class,
                 UserDAOImplTest.class,
-                SessionDAOImplTest.class})
+                SessionDAOImplTest.class,
+                SettingDAOImplTest.class})
 public class DAOTests {
 
 }

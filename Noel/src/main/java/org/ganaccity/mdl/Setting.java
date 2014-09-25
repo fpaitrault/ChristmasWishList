@@ -27,6 +27,11 @@ public class Setting implements Serializable {
 
     }
 
+    public Setting(String key, String value) {
+        this.key = key;
+        this.value = value;
+    }
+
     public String getKey() {
         return key;
     }

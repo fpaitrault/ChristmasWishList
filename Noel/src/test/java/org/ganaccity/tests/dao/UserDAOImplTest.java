@@ -11,6 +11,7 @@ import java.util.List;
 import org.easymock.EasyMock;
 import org.ganaccity.dao.UserDAOImpl;
 import org.ganaccity.mdl.User;
+import org.ganaccity.tests.MdlFactory;
 import org.hibernate.Query;
 import org.hibernate.classic.Session;
 import org.junit.Before;
@@ -36,7 +37,7 @@ public class UserDAOImplTest {
 
     @Test
     public void testReadByUserName() {
-        List<User> users = createUsers();
+        List<User> users = MdlFactory.createUsers();
         Query query = PowerMock.createMock(Query.class);
         EasyMock.expect(currentSession.createQuery("from org.ganaccity.mdl.User")).andReturn(query);
         EasyMock.expect(query.list()).andReturn(users);
@@ -57,7 +58,7 @@ public class UserDAOImplTest {
 
     @Test
     public void testReadAll() {
-        List<User> users = createUsers();
+        List<User> users = MdlFactory.createUsers();
         Query query = PowerMock.createMock(Query.class);
         EasyMock.expect(currentSession.createQuery("from org.ganaccity.mdl.User")).andReturn(query);
         EasyMock.expect(query.list()).andReturn(users);
@@ -81,13 +82,5 @@ public class UserDAOImplTest {
         
         PowerMock.verifyAll();
         PowerMock.resetAll();
-    }
-
-
-    private List<User> createUsers() {
-        List<User> users = new LinkedList<User>();
-        users.add(new User("Florent", "toto",0));
-        users.add(new User("Maeva", "test",1));
-        return users;
     }
 }

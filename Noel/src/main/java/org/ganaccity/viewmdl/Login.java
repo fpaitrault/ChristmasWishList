@@ -1,7 +1,6 @@
 package org.ganaccity.viewmdl;
 
 import org.ganaccity.interfaces.AuthenticationService;
-import org.ganaccity.mdl.DeviceMode;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
@@ -18,7 +17,6 @@ public class Login {
     private String password = "";
     private String passwdConfirm = "";
     private String passwdErrorMsg = "";
-    private DeviceMode deviceMode = new DeviceMode();
     
     @WireVariable
     private AuthenticationService authService;
@@ -52,16 +50,6 @@ public class Login {
     }
     public void setPasswdErrorMsg(String passwdErrorMsg) {
         this.passwdErrorMsg = passwdErrorMsg;
-    }
-
-    @Command
-    @NotifyChange("*")
-    public void clientInfoChanged(@BindingParam("evt") ClientInfoEvent event){
-            deviceMode.setClientInfo((ClientInfoEvent)event);
-    }
-    
-    public DeviceMode getDeviceMode() {
-        return deviceMode;
     }
 
     @Command

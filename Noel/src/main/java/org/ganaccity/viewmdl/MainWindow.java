@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.ganaccity.interfaces.AuthenticationService;
 import org.ganaccity.interfaces.dao.UserDAO;
-import org.ganaccity.mdl.DeviceMode;
 import org.ganaccity.mdl.User;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
@@ -24,12 +23,7 @@ public class MainWindow {
     private UserDAO userDAO;
     
     private User user = null;
-    private DeviceMode deviceMode = null;
 
-    public MainWindow() {
-        deviceMode = new DeviceMode();
-    }
-    
     public List<User> getUsers() {
         return userDAO.readAll();
     }
@@ -51,16 +45,6 @@ public class MainWindow {
             user = authService.getUserCredential(); 
         }
         return user;
-    }
-    
-    @Command
-    @NotifyChange("*")
-    public void clientInfoChanged(@BindingParam("evt") ClientInfoEvent event){
-            deviceMode.setClientInfo((ClientInfoEvent)event);
-    }
-    
-    public DeviceMode getDeviceMode() {
-        return deviceMode;
     }
 
 }
