@@ -50,7 +50,7 @@ public class EMailFactory {
         List<Wish> resWishes = new LinkedList<Wish>();
         for(Wish wish : wishes) {
             //Remove wishes that are for current user
-            if(!wish.getDest().equals(user)) {
+            if(!wish.getDest().equals(user) && user.getFriends().contains(wish.getDest())) {
                 resWishes.add(wish);
             }
         }
