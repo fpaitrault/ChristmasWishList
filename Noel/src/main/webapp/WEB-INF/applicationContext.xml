@@ -17,12 +17,10 @@
 
     </bean>
     <bean id="simpleTrigger"
-        class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
 
         <property name="jobDetail" ref="runMeJob" />
-        <property name="repeatInterval" value="864000000" />
-        <property name="startDelay" value="1000" />
-
+        <property name="cronExpression" value="0 0 6 * * ?" />
     </bean>
     <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="jobDetails">
