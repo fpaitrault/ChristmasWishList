@@ -19,6 +19,9 @@ public class MdlFactory {
         users.add(new User("Florent", "toto",0));
         users.add(new User("Maeva", "test",1));
         users.add(new User("Howard", "titi",2));
+        for(User user : users) {
+            user.setFriends(users);
+        }
         return users;
     }
 
