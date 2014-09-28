@@ -82,7 +82,8 @@ public class Login {
         //Update password on database
         authService.updatePassword(getName(), getPassword());
         //Update email on database
-        authService.updateEmail(getName(), getEmail());
+        if(getEmail() != null)
+            authService.updateEmail(getName(), getEmail());
         //Login application
         if(authService.login(getName(), getPassword()))
             Executions.sendRedirect("/");

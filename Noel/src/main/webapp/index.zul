@@ -1,4 +1,4 @@
-<?page title="Liste de noël"?>
+<?page title="Liste de Noël"?>
 <?init class="org.fpaitrault.AuthenticationInit"?>
 <!-- ?script type="text/javascript" src="/snowfall.js"?-->
 <?meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"?>
@@ -12,10 +12,10 @@
     apply="org.zkoss.bind.BindComposer"
     viewModel="@id('vm') @init('org.fpaitrault.viewmdl.MainWindow')"
     style="
-    background-image: url('http://florent.paitrault.free.fr/background.png');
+    background-image: url('img/background.png');
     background-position: bottom left;
     background-repeat: repeat-x;
-    cursor: url(http://i47.tinypic.com/2hofe52.jpg), auto;
+    cursor: url('img/olaf_small.png'), auto;
     ">
     <script type="text/javascript" >
         snowFall.snow(document.getElementsByTagName("body"), {shadow:
@@ -31,7 +31,7 @@
     <borderlayout width="100%" style="background: transparent;">
         <north height="150px"
             style=" 
-    background-image: url('http://florent.paitrault.free.fr/noel_2014/banner_tab.png');
+    background-image: url('img/ban_anim_4.gif');
     background-position: bottom left;
     background-repeat: repeat-x;
         ">
