@@ -70,4 +70,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	    users.update(user);
 	}
 
+    public void updateEmail(String name, String email) {
+        User user = users.readByUserName(name);
+        user.setEmail(email);
+        users.update(user);
+    }
 }

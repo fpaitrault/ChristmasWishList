@@ -71,6 +71,15 @@
                         </div>
                     </row>
                     <row>
+                        <div>
+                            E-Mail <label style="font-size: x-small;font-style: italic">(laissez vide pour ne pas recevoir les news)</label>
+                        </div>
+                        <div align="center">
+                            <textbox width="90%"
+                                value="@bind(vm.email)" />
+                        </div>
+                    </row>
+                    <row>
                         <span />
                         <div align="center">
                             <button label="Valider"

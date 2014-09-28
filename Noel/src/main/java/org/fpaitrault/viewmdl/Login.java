@@ -20,6 +20,7 @@ public class Login {
     
     @WireVariable
     private AuthenticationService authService;
+    private String email;
 
     public boolean getFirstLogin() {
         return firstLogin;
@@ -38,6 +39,12 @@ public class Login {
     }
     public void setName(String name) {
         this.name = name;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
     public String getPassword() {
         return password;
@@ -74,6 +81,8 @@ public class Login {
         }
         //Update password on database
         authService.updatePassword(getName(), getPassword());
+        //Update email on database
+        authService.updateEmail(getName(), getEmail());
         //Login application
         if(authService.login(getName(), getPassword()))
             Executions.sendRedirect("/");
