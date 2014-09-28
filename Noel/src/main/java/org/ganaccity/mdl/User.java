@@ -1,5 +1,6 @@
 package org.ganaccity.mdl;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -41,7 +42,14 @@ public class User {
 
     @SuppressWarnings("unchecked")
     public List<User> getFriends() {
-        return ListUtils.union(friends, friendsInv);
+        if(friends == null || friendsInv == null)
+            return null;
+        else
+            return ListUtils.union(friends, friendsInv);
+    }
+    
+    public void setFriends(List<User> friends) {
+        this.friends = friends;
     }
 
     public String getEmail() {
@@ -53,13 +61,16 @@ public class User {
     }
 
     public User() {
-        
+        this.friendsInv = new LinkedList<User>();
+        this.friends = new LinkedList<User>();
     }
     
 	public User(String username, String hash, int index) {
 		this.username = username;
 		this.hash = hash;
 		this.index = index;
+		this.friendsInv = new LinkedList<User>();
+        this.friends = new LinkedList<User>();
 	}
 
     public String getUsername() {
@@ -89,10 +100,6 @@ public class User {
 
     public void setPassword(String password) {
         this.hash = DigestUtils.md5Hex(password);
-    }
-    
-    public String getPassword() {
-        return null;
     }
     
 	public int getIndex() {
