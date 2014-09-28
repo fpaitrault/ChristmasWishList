@@ -94,7 +94,7 @@ public class UserGrid {
                 }
             }
         };
-        Messagebox.show("Etes-vous sûr ?", "Supprimer l'idée", new Messagebox.Button[]{
+        Messagebox.show("Etes-vous sÃ»r ?", "Supprimer l'idÃ©e", new Messagebox.Button[]{
                 Messagebox.Button.YES, Messagebox.Button.NO }, Messagebox.QUESTION, clickListener);
     }
 	
