@@ -31,7 +31,7 @@
   </div>
   <div align="center">
         <br/><br/>
-        Si vous ne souhaitez plus recevoir la newsletter merci d'envoyer un email &aacute; l&apos;addresse 
+        Si vous ne souhaitez plus recevoir la newsletter merci d'envoyer un email &agrave; l&apos;adresse :
         <a href="mailto:florentpaitrault@yahoo.fr">florentpaitrault@yahoo.fr</a>.
         <br/>
   </div>

@@ -92,15 +92,17 @@
 </style>
     <div align="center" style="max-width: 1700px;">
         <div class="count_down_container">
-		  <img class="count_down" src="http://florent.paitrault.free.fr/noel_2014/compteur_red.png" />
-		  <img class="count_down" src="http://florent.paitrault.free.fr/noel_2014/d${countdown_u}.png" />
-          <img class="count_down" src="http://florent.paitrault.free.fr/noel_2014/g${countdown_d}.png" />
+          <img height="125px" src="img/lutin_left.png" />
+          <img src="img/countdown/compteur_red.png" />
+          <img class="count_down" src="img/countdown/d${countdown_u}.png" />
+          <img class="count_down" src="img/countdown/g${countdown_d}.png" />
+          <img height="125px" src="img/lutin_right.png" />
 		</div>
         <div class="box">
          <div class="box_inside">Identifiant</div>
 	         <table class="box_table">
 	          <tr>
-	           <td><img width="50px" src="/img/cadenas3.png"/></td>
+	           <td><img width="50px" src="img/cadenas3.png"/></td>
 	           <td class="box_content">
 	               <p class="box_para">
 	                La liste est pr&eacute;vue pour que chaque personne s&apos;y connecte avec son identifiant et son mot de passe.
@@ -118,7 +120,7 @@
             <div class="box_inside">Avoir une id&eacute;e pour une autre personne</div>
             <table class="box_table">
                 <tr>
-                    <td><img width="50px" src="/img/elfe.png"/></td>
+                    <td><img width="50px" src="img/elfe.png"/></td>
                     <td class="box_content">
                          <p class="box_para">
                             Comme on est tous des <span class="text_bold">supers lutins</span>, on peut aussi avoir des supers id&eacute;es. 
@@ -136,7 +138,7 @@
             <div class="box_inside">Annuler une r&eacute;servation</div>
             <table class="box_table">
                 <tr>
-                    <td><img width="50px" src="/img/annulation.png"/></td>
+                    <td><img width="50px" src="img/annulation.png"/></td>
                     <td class="box_content">
                         <p class="box_para">
                             Comme il faut &ecirc;tre sage jusqu&apos;&agrave; la fin, parce que <span class="text_cite text_important">&quot;Le P&egrave;re No&euml;l voit tout&quot;</span>, 
@@ -154,7 +156,7 @@
          <div class="box_inside">Saisir une id&eacute;e dans sa propre liste</div>
              <table class="box_table">
                  <tr>
-                     <td><img width="50px" src="/img/cadeau2.png"/></td>
+                     <td><img width="50px" src="img/cadeau2.png"/></td>
                      <td class="box_content">
                          <p class="box_para">
                              Chaque personne <span class="text_bold">a un onglet</span> dans lequel elle peut saisir ses id&eacute;es pour agrandir sa liste.
@@ -164,11 +166,11 @@
                          </p>
                          <p class="box_para">
                             <span class="text_underline">Petite indication</span> : quand on ajoute une image, on la rajoute en saisissant <span class="text_bold">l&apos;url de la photo</span> trouv&eacute;e sur 
-                            internet et ON OUBLIE PAS de saisir la taille en indiquant la hauteur, au <span class="text_bold">maxi 200px...</span> sinon on va se 
+                            internet et ON OUBLIE PAS de saisir la taille en indiquant la hauteur, au <span class="text_bold">maxi 100px...</span> sinon on va se 
                             retrouver avec des posters sur les &eacute;crans !
                          </p>
                          <p class="box_para">
-                            Ce qui est bien c&apos;est de s&eacute;lectionner <span class="text_bold">l&apos;alignement de la photo &agrave; droite</span>, &ccedil;a fera plus propre.
+                            Ce qui est bien c&apos;est de s&eacute;lectionner <span class="text_bold">l&apos;alignement de la photo &agrave; gauche</span>, &ccedil;a fera plus propre.
                          </p>
                          <p class="box_para">
                             Quand on a fini de d&eacute;crire son id&eacute;e on clique sur <span class="text_bold">la petite coche verte</span>.
@@ -181,7 +183,7 @@
             <div class="box_inside">Commenter ou r&eacute;server une id&eacute;e</div>
             <table class="box_table">
                 <tr>
-                    <td><img width="50px" src="/img/commentaires.png"/></td>
+                    <td><img width="50px" src="img/commentaires.png"/></td>
                     <td class="box_content">
                          <p class="box_para">
                             Quand une personne a saisi son id&eacute;e, tous les lutins la voient apparaitre dans sa liste.
@@ -204,7 +206,7 @@
             <div class="box_inside">Dysfonctionnements</div>
             <table class="box_table">
                 <tr>
-                    <td><img width="50px" src="/img/sos.png"/></td>
+                    <td><img width="50px" src="img/sos.png"/></td>
                     <td class="box_content">
                         <p class="box_para">
                             Bon c&apos;est pas comme si c&apos;&eacute;tait juste une liste de No&euml;l, alors pour le reste, 

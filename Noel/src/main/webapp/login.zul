@@ -14,7 +14,7 @@
         viewModel="@id('vm') @init('org.ganaccity.viewmdl.Login', mode='mock')"
         border="none">
         <div align="center">
-                <image src="http://florent.paitrault.free.fr/noel_2014/accueil.png"/>
+                <image src="img/accueil_anim.gif"/>
         </div>
         <div class="login" align="center">
             <grid width="190pt">
