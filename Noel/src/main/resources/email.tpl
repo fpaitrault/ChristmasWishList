@@ -29,5 +29,11 @@
         </#list>
         </table>
   </div>
+  <div align="center">
+        <br/><br/>
+        Si vous ne souhaitez plus recevoir la newsletter merci d'envoyer un email &aacute; l&apos;addresse 
+        <a href="mailto:florentpaitrault@yahoo.fr">florentpaitrault@yahoo.fr</a>.
+        <br/>
+  </div>
 </body>
 </html>  
