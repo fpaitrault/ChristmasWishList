@@ -8,4 +8,5 @@ public interface AuthenticationService {
     void logout();
     User getUserCredential();
     void updatePassword(String name, String password);
+    void updateEmail(String name, String email);
 }
