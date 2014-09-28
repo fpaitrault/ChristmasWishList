@@ -137,10 +137,6 @@
             <artifactId>commons-fileupload</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.zkoss.zk</groupId>
-            <artifactId>zkmax</artifactId>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
@@ -293,11 +289,6 @@
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
                 <version>1.2.2</version>
-            </dependency>
-            <dependency>
-                <groupId>org.zkoss.zk</groupId>
-                <artifactId>zkmax</artifactId>
-                <version>6.5.0</version>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
