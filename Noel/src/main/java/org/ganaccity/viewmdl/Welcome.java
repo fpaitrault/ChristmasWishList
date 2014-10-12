@@ -8,8 +8,11 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.ganaccity.interfaces.dao.SettingDAO;
+import org.ganaccity.interfaces.dao.UserDAO;
 import org.ganaccity.mailing.EMailFactory;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
+import org.zkoss.zk.ui.select.annotation.WireVariable;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
@@ -19,6 +22,8 @@ import freemarker.template.TemplateExceptionHandler;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class Welcome {
+    @WireVariable
+    private SettingDAO settingDAO;
 
     public Welcome() {
     }
@@ -44,7 +49,7 @@ public class Welcome {
         cfg.setDefaultEncoding("UTF-8");
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
         
-        Template tmpl = cfg.getTemplate("welcome.tpl");
+        Template tmpl = new Template("tpl", settingDAO.get("Welcome.TPL"), cfg);
         
         StringWriter writer = new StringWriter();
         
