@@ -1,6 +1,7 @@
 package org.fpaitrault.viewmdl;
 
 import org.fpaitrault.interfaces.AuthenticationService;
+import org.fpaitrault.interfaces.dao.SettingDAO;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
@@ -20,6 +21,8 @@ public class Login {
     
     @WireVariable
     private AuthenticationService authService;
+    @WireVariable
+    private SettingDAO settingDAO;
     private String email;
 
     public boolean getFirstLogin() {
@@ -87,5 +90,9 @@ public class Login {
         //Login application
         if(authService.login(getName(), getPassword()))
             Executions.sendRedirect("/");
+    }
+    
+    public String getBackground() {
+        return settingDAO.get("Login.BACKGROUND");
     }
 }

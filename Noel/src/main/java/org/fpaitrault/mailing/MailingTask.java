@@ -41,7 +41,7 @@ public class MailingTask extends QuartzJobBean {
 
         //Configure and send email for each user if necessary
         Session session = createEMailSession();
-        EMailFactory factory = new EMailFactory();
+        EMailFactory factory = new EMailFactory(context);
         for(User user : users) {
             //Check if user has a configured email
             if(user.getEmail() != null && !user.getEmail().isEmpty() && !wishes.isEmpty()) {

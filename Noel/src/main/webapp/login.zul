@@ -14,7 +14,7 @@
         viewModel="@id('vm') @init('org.fpaitrault.viewmdl.Login', mode='mock')"
         border="none">
         <div align="center">
-                <image src="img/accueil_anim.gif"/>
+                <image src="${vm.background}"/>
         </div>
         <div class="login" align="center">
             <grid width="190pt">

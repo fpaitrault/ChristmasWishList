@@ -1,6 +1,5 @@
 <?page title="Liste de Noël"?>
 <?init class="org.fpaitrault.AuthenticationInit"?>
-<!-- ?script type="text/javascript" src="/snowfall.js"?-->
 <?meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"?>
 <?meta name="apple-mobile-web-app-capable" content="yes"?>
 <?meta name="apple-mobile-web-app-status-bar-style" content="black"?>
@@ -11,27 +10,17 @@
 <window id="win" border="none" height="100%" width="100%"
     apply="org.zkoss.bind.BindComposer"
     viewModel="@id('vm') @init('org.fpaitrault.viewmdl.MainWindow')"
-    style="
-    background-image: url('img/background.png');
+    >
+    <borderlayout width="100%" style="
+    background-color: #ffffff;
+    background-image: url('${vm.background}');
     background-position: bottom left;
     background-repeat: repeat-x;
     cursor: url('img/olaf_small.png'), auto;
     ">
-    <script type="text/javascript" >
-        snowFall.snow(document.getElementsByTagName("body"), {shadow:
-        true, maxSize: 10, round: true});
-        window.addEventListener("load",function() {
-    // Set a timeout...
-    setTimeout(function(){
-        // Hide the address bar!
-        window.scrollTo(0, 1);
-    }, 0);
-});
-    </script>
-    <borderlayout width="100%" style="background: transparent;">
         <north height="150px"
             style=" 
-    background-image: url('img/ban_anim_4.gif');
+    background-image: url('${vm.banner}');
     background-position: bottom left;
     background-repeat: repeat-x;
         ">

@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.fpaitrault.interfaces.AuthenticationService;
+import org.fpaitrault.interfaces.dao.SettingDAO;
 import org.fpaitrault.interfaces.dao.UserDAO;
 import org.fpaitrault.mdl.User;
 import org.zkoss.bind.annotation.BindingParam;
@@ -21,6 +22,8 @@ public class MainWindow {
     private AuthenticationService authService = null;
     @WireVariable
     private UserDAO userDAO;
+    @WireVariable
+    private SettingDAO settingDAO;
     
     private User user = null;
 
@@ -47,4 +50,11 @@ public class MainWindow {
         return user;
     }
 
+    public String getBanner() {
+        return settingDAO.get("Index.BANNER");
+    }
+    
+    public String getBackground() {
+        return settingDAO.get("Index.BACKGROUND");
+    }
 }

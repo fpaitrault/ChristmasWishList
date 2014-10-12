@@ -1,6 +1,7 @@
 package org.fpaitrault.mailing;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,8 +12,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.fpaitrault.interfaces.dao.SettingDAO;
+import org.fpaitrault.interfaces.dao.UserDAO;
+import org.fpaitrault.interfaces.dao.WishDAO;
 import org.fpaitrault.mdl.User;
 import org.fpaitrault.mdl.Wish;
+import org.quartz.JobExecutionContext;
+import org.quartz.SchedulerException;
+import org.springframework.context.ApplicationContext;
 
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
@@ -24,9 +31,23 @@ public class EMailFactory {
     protected static final SimpleDateFormat dateFormat = 
             new SimpleDateFormat("dd/MM/yyyy");
     protected Calendar calendar;
+    private SettingDAO settingDao;
 
-    public EMailFactory() {
+    public EMailFactory(JobExecutionContext context) {
         calendar = Calendar.getInstance();
+        resolveDAOs(context);
+    }
+
+    private void resolveDAOs(JobExecutionContext context) {
+        if(settingDao == null) {
+            ApplicationContext appctx;
+            try {
+                appctx = (ApplicationContext)context.getScheduler().getContext().get("applicationContext");
+                settingDao = (SettingDAO) appctx.getBean("settingDAO");
+            } catch (SchedulerException e) {
+                e.printStackTrace();
+            }
+        }
     }
     
     public String createEmail(User user, List<Wish> wishes) throws IOException, TemplateException {
@@ -36,8 +57,7 @@ public class EMailFactory {
         cfg.setObjectWrapper(new DefaultObjectWrapper());
         cfg.setDefaultEncoding("UTF-8");
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
-        
-        Template tmpl = cfg.getTemplate("email.tpl");
+        Template tmpl = new Template("tpl", settingDao.get("MailingTask.EMAILTPL"), cfg);
         
         StringWriter writer = new StringWriter();
         tmpl.process(createModel(user, wishes), writer);
