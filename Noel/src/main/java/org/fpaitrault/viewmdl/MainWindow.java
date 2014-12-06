@@ -42,6 +42,11 @@ public class MainWindow {
         authService.logout();
         Executions.sendRedirect("/login.zul");
     }
+    
+    @Command
+    public void showAdmin() {
+        Executions.createComponents("admin.zul", null, null);
+    }
 
     public User getUser() {
         if(user == null) {

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service("settingDAO")
 public class SettingDAOImpl extends GenericDAOImpl<Setting> implements SettingDAO {
-    private List<Setting> settingCache;
 
     public SettingDAOImpl() {
     	super(Setting.class);
@@ -17,15 +16,27 @@ public class SettingDAOImpl extends GenericDAOImpl<Setting> implements SettingDA
     @Override
     public String get(String key) {
         synchronized (getSession()) {
-            if(settingCache == null) {
-                settingCache = super.readAll();
-            }
-            for (Setting setting : settingCache) {
+            for (Setting setting : super.readAll()) {
                 if (setting.getKey().equalsIgnoreCase(key)) {
+                    if(setting.getValue() == null)
+                        return "";
                     return setting.getValue();
                 }
             }
-            return null;
+            return "";
+        }
+    }
+
+    @Override
+    public void set(String key, String value) {
+        synchronized (getSession()) {
+            for (Setting setting : super.readAll()) {
+                if (setting.getKey().equalsIgnoreCase(key)) {
+                    setting.setValue(value);
+                    this.update(setting);
+                }
+            }
+            return;
         }
     }
 }

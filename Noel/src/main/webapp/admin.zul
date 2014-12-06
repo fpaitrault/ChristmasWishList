@@ -1,0 +1,32 @@
+<?page title="Administration" contentType="text/html;charset=UTF-8"?>
+<zk>
+    <window title="Administration" border="normal" mode="modal" sizable="true"
+        closable="true" width="80%" height="80%">     
+        <borderlayout>
+            <north>
+                <toolbar width="100%" height="40px">
+                    <toolbarbutton label="Gestion des utilisateurs" image="img/system-users.png">
+                        <attribute name="onClick"><![CDATA[
+                             content.src = "mgmt/users.zul";
+                        ]]></attribute>
+                    </toolbarbutton>
+                    <space />
+                    <toolbarbutton label="Mailing" image="img/internet-mail.png">
+                        <attribute name="onClick"><![CDATA[
+                             content.src = "mgmt/mailing.zul";
+                        ]]></attribute>
+                    </toolbarbutton>
+                    <space />
+                    <toolbarbutton label="Ecran d'accueil" image="img/user-desktop.png">
+                        <attribute name="onClick"><![CDATA[
+                             content.src = "mgmt/welcome.zul";
+                        ]]></attribute>
+                    </toolbarbutton>
+                </toolbar>
+            </north>
+            <center style="padding: 5pt">
+                <include id="content" src="mgmt/users.zul"/>
+            </center>
+        </borderlayout>
+    </window>
+</zk>

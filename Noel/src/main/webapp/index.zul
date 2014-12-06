@@ -3,9 +3,27 @@
 <?meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"?>
 <?meta name="apple-mobile-web-app-capable" content="yes"?>
 <?meta name="apple-mobile-web-app-status-bar-style" content="black"?>
+<?meta http-equiv="Content-Type" content="text/html; charset=utf-8"?>
 <zk>
+  <style src="http://codemirror.net/lib/codemirror.css"/>
+  <style src="http://codemirror.net/addon/fold/foldgutter.css" />
+  <script src="http://codemirror.net/lib/codemirror.js"></script>
+  <script src="http://codemirror.net/addon/fold/foldcode.js"></script>
+  <script src="http://codemirror.net/addon/fold/foldgutter.js"></script>
+  <script src="http://codemirror.net/addon/fold/brace-fold.js"></script>
+  <script src="http://codemirror.net/addon/fold/xml-fold.js"></script>
+  <script src="http://codemirror.net/addon/fold/markdown-fold.js"></script>
+  <script src="http://codemirror.net/addon/fold/comment-fold.js"></script>
+  <script src="http://codemirror.net/mode/javascript/javascript.js"></script>
+  <script src="http://codemirror.net/mode/xml/xml.js"></script>
+  <script src="http://codemirror.net/mode/markdown/markdown.js"></script>
 <style>
     body { padding: 0px; }
+    .CodeMirror {
+      height: 100%;
+      width: 100%;
+    }
+    .CodeMirror-scroll {height: 100%; overflow-y: auto; overflow-x: auto;} 
 </style>
 <window id="win" border="none" height="100%" width="100%"
     apply="org.zkoss.bind.BindComposer"
@@ -27,6 +45,8 @@
             <menubar>
                 <menuitem label="Déconnexion"
                     onClick="@command('logout')" />
+                <menuitem label="Administration"
+                    onClick="@command('showAdmin')"/>
                 <menuitem disabled="true" label="Bienvenue ${vm.user}" />
             </menubar>
         </north>

@@ -13,11 +13,7 @@ public class Setting implements Serializable {
 
     private static final long serialVersionUID = -3621224994226066716L;
 
-    @Id  @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private String index;
-
-    @Column
+    @Id @Column(name= "keyName")
     private String key;
 
     @Column

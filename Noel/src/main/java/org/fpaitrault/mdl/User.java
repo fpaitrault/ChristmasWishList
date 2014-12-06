@@ -31,21 +31,14 @@ public class User {
 	private String hash;
     @Column
     private String email;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "users_link", joinColumns = { @JoinColumn(name = "left", nullable = false, updatable = false) }, 
-            inverseJoinColumns = { @JoinColumn(name = "right", nullable = false, updatable = false) })
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "users_link", joinColumns = { @JoinColumn(name = "leftId") }, 
+            inverseJoinColumns = { @JoinColumn(name = "rightId") })
     private List<User> friends;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "users_link", joinColumns = { @JoinColumn(name = "right", nullable = false, updatable = false) }, 
-            inverseJoinColumns = { @JoinColumn(name = "left", nullable = false, updatable = false) })
-    private List<User> friendsInv;
 
     @SuppressWarnings("unchecked")
     public List<User> getFriends() {
-        if(friends == null || friendsInv == null)
-            return null;
-        else
-            return ListUtils.union(friends, friendsInv);
+        return friends;
     }
     
     public void setFriends(List<User> friends) {
@@ -61,7 +54,6 @@ public class User {
     }
 
     public User() {
-        this.friendsInv = new LinkedList<User>();
         this.friends = new LinkedList<User>();
     }
     
@@ -69,7 +61,6 @@ public class User {
 		this.username = username;
 		this.hash = hash;
 		this.index = index;
-		this.friendsInv = new LinkedList<User>();
         this.friends = new LinkedList<User>();
 	}
 

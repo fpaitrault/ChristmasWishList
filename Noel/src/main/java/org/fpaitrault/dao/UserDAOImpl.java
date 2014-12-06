@@ -9,30 +9,17 @@ import org.springframework.stereotype.Service;
 @Service("userDAO")
 public class UserDAOImpl extends GenericDAOImpl<User> implements UserDAO {
 
-    private List<User> userCache = null;
-
     public UserDAOImpl() {
         super(User.class);
     }
 
     public final User readByUserName(final String username) {
-        if(userCache == null) {
-            userCache = super.readAll();
-        }
-        for (User user : userCache) {
+        for (User user : readAll()) {
             if (user.getUsername().equalsIgnoreCase(username)) {
                 return user;
             }
         }
         return null;
-    }
-
-    @Override
-    public final List<User> readAll() {
-        if(userCache == null) {
-            userCache = super.readAll();
-        }
-        return userCache;
     }
 
 }
