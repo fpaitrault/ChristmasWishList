@@ -9,6 +9,7 @@ import org.fpaitrault.interfaces.dao.UserDAO;
 import org.fpaitrault.mdl.User;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.ClientInfoEvent;
@@ -106,6 +107,13 @@ public class UserMgmt {
             userDAO.update(activeUser);
         }
     }
+    @GlobalCommand
+    @NotifyChange({"friends","notFriends","users", "activeUser"})
+    public void refresh() { }
     
+    @Command
+    public void addUser() {
+        Executions.createComponents("mgmt/newUser.zul", null, null);
+    }
 }
 

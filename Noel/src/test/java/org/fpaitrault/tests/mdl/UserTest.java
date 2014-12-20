@@ -41,7 +41,7 @@ public class UserTest {
     public void testGetUsername() {
         User user = new User();
         
-        user.setUserName("username");
+        user.setUsername("username");
         assertEquals("username", user.getUsername());
     }
 

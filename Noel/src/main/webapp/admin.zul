@@ -1,7 +1,7 @@
 <?page title="Administration" contentType="text/html;charset=UTF-8"?>
 <zk>
     <window title="Administration" border="normal" mode="modal" sizable="true"
-        closable="true" width="80%" height="80%">     
+        closable="true" width="70%" height="80%">     
         <borderlayout>
             <north>
                 <toolbar width="100%" height="40px">

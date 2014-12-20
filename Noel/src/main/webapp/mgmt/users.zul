@@ -1,0 +1,45 @@
+<zk>
+    <borderlayout hflex="1" vflex="1" apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm') @init('org.fpaitrault.viewmdl.mgmt.UserMgmt')">
+        <west width="200pt" collapsible="true" autoscroll="true" title="Liste des utilisateurs">
+            <vbox hflex="1" vflex="1">
+                <toolbar>
+                    <toolbarbutton label="Nouvel utilisateur" onClick="@command('addUser')"/>
+                </toolbar>
+                <listbox model="@bind(vm.users)" selectedItem="@bind(vm.activeUser)" hflex="1" vflex="1">
+                    <template name="model" var="item">
+                        <listitem label="@bind(item.name)" />
+                    </template>
+                </listbox>
+            </vbox>
+        </west>
+        <center>
+            <hbox vflex="1" hflex="1">
+                <listbox hflex="1" vflex="1" model="@bind(vm.notFriends)" selectedItem="@bind(vm.selectedNotFriend)">
+                    <listhead>
+                        <listheader label="Non visibles" sort="auto" />
+                    </listhead>
+                    <template name="model">
+                        <listitem>
+                            <listcell label="${each.name}" />
+                        </listitem>
+                    </template>
+                </listbox>
+                <vbox>
+                <button label="+" onClick="@command('addFriend')"/>
+                <button label="-" onClick="@command('removeFriend')"/>
+                </vbox>
+                <listbox hflex="1" vflex="1" model="@bind(vm.friends)" selectedItem="@bind(vm.selectedFriend)">
+                    <listhead>
+                        <listheader label="Visibles" sort="auto" />
+                    </listhead>
+                    <template name="model">
+                        <listitem>
+                            <listcell label="${each.name}" />
+                        </listitem>
+                    </template>
+                </listbox>
+            </hbox>
+        </center>
+    </borderlayout>
+</zk>

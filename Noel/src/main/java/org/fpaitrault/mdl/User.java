@@ -68,7 +68,7 @@ public class User {
         return username;
     }
 
-    public void setUserName(String username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -103,7 +103,7 @@ public class User {
 
     @Override
     public boolean equals(Object obj) {
-        if((User) obj == null)
+        if(obj == null || !User.class.isAssignableFrom(obj.getClass()))
             return false;
         else
             return this.getIndex() == ((User) obj).getIndex();

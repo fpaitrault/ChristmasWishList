@@ -1,0 +1,80 @@
+<zk xmlns:w="client" xmlns:h="http://www.w3.org/1999/xhtml">
+    <window title="Ajouter un utilisateur" border="normal" mode="modal" apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('org.fpaitrault.viewmdl.mgmt.NewUser')"
+            validationMessages="@id('vmsgs')" id="modal"
+        sizable="true" closable="true" width="300pt">
+        <div form="@id('fx') @load(vm.user) @save(vm.user, before='submit')
+                  @validator('org.fpaitrault.viewmdl.mgmt.NewUserValidator', 
+                             retypedPassword=vm.retypedPassword, retypedEmail=vm.retypedEmail)">
+            <grid>
+                <columns>
+                    <column label="Type" width="100px" />
+                    <column label="" />
+                </columns>
+                <rows>
+                    <row>
+                        Nom utilisateur:
+                        <hlayout>
+                            <textbox value="@bind(fx.username)"
+                                width="150px" tabindex="1" />
+                        </hlayout>
+                    </row>
+                    <row>
+                        Prénom:
+                        <hlayout>
+                            <textbox value="@bind(fx.name)"
+                                width="150px" tabindex="1" />
+                        </hlayout>
+                    </row>
+                    <row>
+                        Mot de passe:
+                        <textbox type="password"
+                            value="@save(fx.password)" width="150px"
+                            tabindex="2" />
+                    </row>
+                    <row>
+                        Confirmation mot de passe:
+                        <cell>
+                            <textbox type="password"
+                                value="@bind(vm.retypedPassword)"
+                                width="150px" tabindex="3" />
+                            <label class="error"
+                                value="@load(vmsgs['password'])" />
+                        </cell>
+                    </row>
+                    <row>
+                        E-mail:
+                        <cell>
+                            <textbox value="@bind(fx.email)"
+                                width="150px" tabindex="9" />
+                            <label class="error"
+                                value="@load(vmsgs['email'])" />
+                        </cell>
+
+                    </row>
+                    <row>
+                        Confirmation e-mail:
+                        <cell>
+                            <textbox value="@bind(vm.retypedEmail)"
+                                width="150px" tabindex="9" />
+                            <label class="error"
+                                value="@load(vmsgs['email'])" />
+                        </cell>
+
+                    </row>
+                    <row>
+                        <cell colspan="3" style="text-align:center">
+                            <vlayout>
+                                <label visible="@load(empty vmsgs)"
+                                    value="@load(empty vmsgs ? 'Form successfully submitted!' : '', before='submit')" />
+                                <button label="Submit"
+                                    onClick="@command('submit') @global-command('refresh')"
+                                    width="100px" height="30px" />
+                            </vlayout>
+                        </cell>
+                    </row>
+                </rows>
+            </grid>
+        </div>
+    </window>
+</zk>
