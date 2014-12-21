@@ -32,4 +32,9 @@
     <language-config>
         <addon-uri>/WEB-INF/ckez-bind-addon.xml</addon-uri>
     </language-config>
+
+    <library-property>
+        <name>org.zkoss.web.preferred.locale</name>
+        <value>fr</value>
+    </library-property>
 </zk>

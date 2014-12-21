@@ -1,23 +1,23 @@
-<?page title="Administration" contentType="text/html;charset=UTF-8"?>
+<?page title="${labels.admin.title}" contentType="text/html;charset=UTF-8"?>
 <zk>
-    <window title="Administration" border="normal" mode="modal" sizable="true"
+    <window title="${labels.admin.title}" border="normal" mode="modal" sizable="true"
         closable="true" width="70%" height="80%">     
         <borderlayout>
             <north>
                 <toolbar width="100%" height="40px">
-                    <toolbarbutton label="Gestion des utilisateurs" image="img/system-users.png">
+                    <toolbarbutton label="${labels.admin.userMgmt.$}" image="img/system-users.png">
                         <attribute name="onClick"><![CDATA[
                              content.src = "mgmt/users.zul";
                         ]]></attribute>
                     </toolbarbutton>
                     <space />
-                    <toolbarbutton label="Mailing" image="img/internet-mail.png">
+                    <toolbarbutton label="${labels.admin.mailing.$}" image="img/internet-mail.png">
                         <attribute name="onClick"><![CDATA[
                              content.src = "mgmt/mailing.zul";
                         ]]></attribute>
                     </toolbarbutton>
                     <space />
-                    <toolbarbutton label="Ecran d'accueil" image="img/user-desktop.png">
+                    <toolbarbutton label="${labels.admin.welcome.$}" image="img/user-desktop.png">
                         <attribute name="onClick"><![CDATA[
                              content.src = "mgmt/welcome.zul";
                         ]]></attribute>

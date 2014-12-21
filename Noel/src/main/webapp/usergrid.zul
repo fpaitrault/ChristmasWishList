@@ -2,19 +2,19 @@
     <borderlayout apply="org.zkoss.bind.BindComposer"
         viewModel="@id('vm') @init('org.fpaitrault.viewmdl.UserGrid')">
         <north>
-            <button label="Ajouter une idée"
+            <button label="${labels.grid.newidea}"
                 onClick="@command('addIdea')" />
         </north>
         <center>
             <grid height="100%"
                 model="@load(vm.wishList) @template((each.editStatus) ? 'editable' : 'noneditable')">
                 <columns>
-                    <column label="Description" hflex="4" />
-                    <column label="Commentaires" hflex="4"
+                    <column label="${labels.grid.desc}" hflex="4" />
+                    <column label="${labels.grid.comment}" hflex="4"
                         if="${vm.currentUserList}" />
-                    <column label="Idée réservée par" hflex="2"
+                    <column label="${labels.grid.reservedBy}" hflex="2"
                         if="${vm.currentUserList}" />
-                    <column label="Actions" width="100px" />
+                    <column label="${labels.grid.actions}" width="100px" />
                 </columns>
                 <template name="noneditable">
                     <row>
@@ -62,7 +62,7 @@
                                 <button image="/img/cross-small.png"
                                     onClick="@command('changeEditStatus', wishStatus=each)" />
                             </hbox>
-                            <button label="Supprimer"
+                            <button label="${labels.grid.suppr}"
                                 onClick="@command('deleteIdea', wishStatus=each)" />
                         </vbox>
                     </row>

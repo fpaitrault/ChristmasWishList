@@ -6,21 +6,21 @@
             <vbox hflex="1">
                 <hbox hflex="1">
                     <groupbox hflex="1" mold="3d" height="100%">
-                        <caption label="Paramètres"/>
+                        <caption label="${labels.admin.mailing.param}"/>
                         <grid>
                             <rows>
-                                <row>Sujet: <textbox hflex="1" value="@bind(vm.subject) @save(vm.subject, before='saveMailing')"/></row>
+                                <row><label value="${labels.admin.mailing.subject}"/><textbox hflex="1" value="@bind(vm.subject) @save(vm.subject, before='saveMailing')"/></row>
                             </rows>
                         </grid>
                     </groupbox>
                     <groupbox hflex="1" mold="3d" height="100%">
-                        <caption label="Configuration SMTP"/>
+                        <caption label="${labels.admin.mailing.conf}"/>
                         <grid>
                             <rows>
-                                <row>Adresse email d'origine: <textbox hflex="1" value="@bind(vm.email) @save(vm.email, before='saveMailing')"/></row>
-                                <row>Hôte: <textbox hflex="1" value="@bind(vm.smtpHost) @save(vm.smtpHost, before='saveMailing')"/></row>
-                                <row>Port: <textbox hflex="1" value="@bind(vm.smtpPort) @save(vm.smtpPort, before='saveMailing')"/></row>
-                                <row>Mot de passe: <textbox hflex="1" value="@bind(vm.password) @save(vm.password, before='saveMailing')"/></row>
+                                <row><label value="${labels.admin.mailing.address}"/><textbox hflex="1" value="@bind(vm.email) @save(vm.email, before='saveMailing')"/></row>
+                                <row><label value="${labels.admin.mailing.host}"/><textbox hflex="1" value="@bind(vm.smtpHost) @save(vm.smtpHost, before='saveMailing')"/></row>
+                                <row><label value="${labels.admin.mailing.port}"/><textbox hflex="1" value="@bind(vm.smtpPort) @save(vm.smtpPort, before='saveMailing')"/></row>
+                                <row><label value="${labels.admin.mailing.password}"/><textbox hflex="1" type="password" value="@bind(vm.password) @save(vm.password, before='saveMailing')"/></row>
                             </rows>
                         </grid>
                     </groupbox>
@@ -30,7 +30,7 @@
         </north>
         <center border="none">
             <groupbox mold="3d" height="100%">
-                <caption label="Modèle"/>
+                <caption label="${labels.admin.mailing.model}"/>
                 <textbox hflex="1" vflex="1" multiline="true"
                     value="@bind(vm.mailing) @save(vm.mailing, before='saveMailing')">
                     <attribute w:name="bind_"><![CDATA[
@@ -59,7 +59,7 @@
             <vbox hflex="1">
                 <space/>
                 <hbox pack="center" align="end" hflex="1">
-                    <button label="Valider" onClick="@command('saveMailing')"/>
+                    <button label="${labels.admin.mailing.valid}" onClick="@command('saveMailing')"/>
                 </hbox>
             </vbox>
         </south>

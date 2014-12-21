@@ -30,7 +30,7 @@
             <vbox hflex="1">
                 <space />
                 <hbox pack="center" align="end" hflex="1">
-                    <button label="Valider" onClick="@command('saveWelcome')"/>
+                    <button label="${labels.admin.welcome.valid}" onClick="@command('saveWelcome')"/>
                 </hbox>
             </vbox>
         </south>

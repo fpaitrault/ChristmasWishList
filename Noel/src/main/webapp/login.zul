@@ -20,14 +20,14 @@
             <grid width="190pt">
                 <rows>
                     <row>
-                        Nom utilisateur
+                        <label value="${labels.login.username}"/>
                         <div align="center">
                             <textbox width="90%"
                                 value="@bind(vm.name)" />
                         </div>
                     </row>
                     <row>
-                        Mot de passe
+                        <label value="${labels.login.password}"/>
                         <div align="center">
                             <textbox width="90%" type="password"
                                 value="@bind(vm.password)" onOK="@command('login')" />
@@ -35,7 +35,7 @@
                     </row>
                     <row spans="2">
                         <div align="center">
-                            <button label="Valider"
+                            <button label="${labels.login.valid}"
                                 onClick="@command('login')" />
                         </div>
                     </row>
@@ -43,26 +43,26 @@
                 </rows>
             </grid>
         </div>
-        <window mode="modal" title="Première connexion" width="300px"
+        <window mode="modal" title="${labels.login.firstConnect}" width="300px"
                 visible="@bind(vm.firstLogin)">
             <grid width="100%">
                 <rows>
                     <row>
-                        Nom utilisateur
+                        <label value="${labels.login.username}"/>
                         <div align="center">
                             <label width="90%"
                                 value="@bind(vm.name)" />
                         </div>
                     </row>
                     <row>
-                        Mot de passe
+                        <label value="${labels.login.password}"/>
                         <div align="center">
                             <textbox width="90%" type="password"
                                 value="@bind(vm.password)" />
                         </div>
                     </row>
                     <row>
-                        Confirmer le mot de passe
+                        <label value="${labels.login.retypePassword}"/>
                         <div align="center">
                             <textbox width="90%" type="password"
                                 value="@bind(vm.passwdConfirm)" />
@@ -72,7 +72,7 @@
                     </row>
                     <row>
                         <div>
-                            E-Mail <label style="font-size: x-small;font-style: italic">(laissez vide pour ne pas recevoir les news)</label>
+                            <label value="${labels.login.email}"/> <label style="font-size: x-small;font-style: italic">(laissez vide pour ne pas recevoir les news)</label>
                         </div>
                         <div align="center">
                             <textbox width="90%"
@@ -82,7 +82,7 @@
                     <row>
                         <span />
                         <div align="center">
-                            <button label="Valider"
+                            <button label="${labels.login.valid }"
                                 onClick="@command('firstLogin')" />
                         </div>
                     </row>

@@ -43,18 +43,18 @@
     background-repeat: repeat-x;
         ">
             <menubar>
-                <menuitem label="Déconnexion"
+                <menuitem label="${labels.index.disconnect}"
                     onClick="@command('logout')" />
-                <menuitem label="Administration"
+                <menuitem label="${labels.index.admin}"
                     onClick="@command('showAdmin')"/>
-                <menuitem disabled="true" label="Bienvenue ${vm.user}" />
+                <menuitem disabled="true" label="${labels.index.welcome} ${vm.user}" />
             </menubar>
         </north>
         <center style="background: transparent;">
             <tabbox height="100%" style="background: transparent;">
                 <tabs children="@load(vm.friends)" >
                     <template name="children">
-                        <tab label="Liste de ${each}"></tab>
+                        <tab label="${labels.index.list} ${each}"></tab>
                     </template>
                 </tabs>
                 <tabpanels children="@load(vm.friends)">

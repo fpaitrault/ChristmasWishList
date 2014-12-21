@@ -1,5 +1,5 @@
 <zk xmlns:w="client" xmlns:h="http://www.w3.org/1999/xhtml">
-    <window title="Ajouter un utilisateur" border="normal" mode="modal" apply="org.zkoss.bind.BindComposer"
+    <window title="${labels.admin.userMgmt.addUser}" border="normal" mode="modal" apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('org.fpaitrault.viewmdl.mgmt.NewUser')"
             validationMessages="@id('vmsgs')" id="modal"
         sizable="true" closable="true" width="300pt">
@@ -8,32 +8,32 @@
                              retypedPassword=vm.retypedPassword, retypedEmail=vm.retypedEmail)">
             <grid>
                 <columns>
-                    <column label="Type" width="100px" />
+                    <column label="${labels.admin.userMgmt.type}" width="100px" />
                     <column label="" />
                 </columns>
                 <rows>
                     <row>
-                        Nom utilisateur:
+                        <label value="${labels.admin.userMgmt.userName}"/>
                         <hlayout>
                             <textbox value="@bind(fx.username)"
                                 width="150px" tabindex="1" />
                         </hlayout>
                     </row>
                     <row>
-                        Prénom:
+                       <label value="${labels.admin.userMgmt.name}"/>
                         <hlayout>
                             <textbox value="@bind(fx.name)"
                                 width="150px" tabindex="1" />
                         </hlayout>
                     </row>
                     <row>
-                        Mot de passe:
+                        <label value="${labels.admin.userMgmt.password}"/>
                         <textbox type="password"
                             value="@save(fx.password)" width="150px"
                             tabindex="2" />
                     </row>
                     <row>
-                        Confirmation mot de passe:
+                        <label value="${labels.admin.userMgmt.retypePassword}"/>
                         <cell>
                             <textbox type="password"
                                 value="@bind(vm.retypedPassword)"
@@ -43,7 +43,7 @@
                         </cell>
                     </row>
                     <row>
-                        E-mail:
+                        <label value="${labels.admin.userMgmt.email}"/>
                         <cell>
                             <textbox value="@bind(fx.email)"
                                 width="150px" tabindex="9" />
@@ -53,7 +53,7 @@
 
                     </row>
                     <row>
-                        Confirmation e-mail:
+                        <label value="${labels.admin.userMgmt.retypeEmail}"/>
                         <cell>
                             <textbox value="@bind(vm.retypedEmail)"
                                 width="150px" tabindex="9" />
@@ -65,9 +65,7 @@
                     <row>
                         <cell colspan="3" style="text-align:center">
                             <vlayout>
-                                <label visible="@load(empty vmsgs)"
-                                    value="@load(empty vmsgs ? 'Form successfully submitted!' : '', before='submit')" />
-                                <button label="Submit"
+                                <button label="${labels.admin.userMgmt.submit}"
                                     onClick="@command('submit') @global-command('refresh')"
                                     width="100px" height="30px" />
                             </vlayout>
