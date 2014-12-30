@@ -33,13 +33,13 @@ public class UserMgmt {
     private String mailing = null;
  
     public String getMailing() {
-        String mailing = settingDAO.get("MailingTask.EMAILTPL");
-        mailing.replaceAll("&", "&amp;");
-        mailing.replaceAll("\n", "<br/>");
+        String mailing = settingDAO.get("MailingTask.EMAILTPL"); //$NON-NLS-1$
+        mailing.replaceAll("&", "&amp;"); //$NON-NLS-1$ //$NON-NLS-2$
+        mailing.replaceAll("\n", "<br/>"); //$NON-NLS-1$ //$NON-NLS-2$
         return mailing;
     }
     public void setMailing(String mailing) {
-        this.mailing = mailing.replaceAll("&amp;", "&");
+        this.mailing = mailing.replaceAll("&amp;", "&"); //$NON-NLS-1$ //$NON-NLS-2$
     }
 
     public List<User> getUsers() {
@@ -113,7 +113,7 @@ public class UserMgmt {
     
     @Command
     public void addUser() {
-        Executions.createComponents("mgmt/newUser.zul", null, null);
+        Executions.createComponents("mgmt/newUser.zul", null, null); //$NON-NLS-1$
     }
 }
 

@@ -39,17 +39,17 @@ public class Welcome {
         Date christmas = cal.getTime();
         long diff = christmas.getTime() - today.getTime();
         long numDays = diff/(1000*60*60*24);
-        model.put("countdown_d",  Long.toString(numDays/10) );
-        model.put("countdown_u",  Long.toString(numDays%10) );
+        model.put("countdown_d",  Long.toString(numDays/10) ); //$NON-NLS-1$
+        model.put("countdown_u",  Long.toString(numDays%10) ); //$NON-NLS-1$
         
         //configure page processor
         Configuration cfg = new Configuration();
-        cfg.setClassForTemplateLoading(EMailFactory.class,"/");
+        cfg.setClassForTemplateLoading(EMailFactory.class,"/"); //$NON-NLS-1$
         cfg.setObjectWrapper(new DefaultObjectWrapper());
-        cfg.setDefaultEncoding("UTF-8");
+        cfg.setDefaultEncoding("UTF-8"); //$NON-NLS-1$
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
         
-        Template tmpl = new Template("tpl", settingDAO.get("Welcome.TPL"), cfg);
+        Template tmpl = new Template("tpl", settingDAO.get("Welcome.TPL"), cfg); //$NON-NLS-1$ //$NON-NLS-2$
         
         StringWriter writer = new StringWriter();
         

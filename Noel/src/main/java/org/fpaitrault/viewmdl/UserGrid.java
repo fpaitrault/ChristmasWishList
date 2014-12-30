@@ -14,6 +14,7 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ExecutionArgParam;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
@@ -70,7 +71,7 @@ public class UserGrid {
     @NotifyChange("wishList")
 	public void addIdea() {
 		Wish wish = new Wish(authService.getUserCredential(),
-		        "", "", user, null);
+		        "", "", user, null); //$NON-NLS-1$ //$NON-NLS-2$
 		this.wishDAO.create(wish);
 		wishStatusList.add(new WishStatus(wish, true));
 	}
@@ -94,7 +95,8 @@ public class UserGrid {
                 }
             }
         };
-        Messagebox.show("Etes-vous sûr ?", "Supprimer l'idée", new Messagebox.Button[]{
+        Messagebox.show(Labels.getLabel("grid.confirm"), //$NON-NLS-1$
+                Labels.getLabel("grid.rmidea"), new Messagebox.Button[]{  //$NON-NLS-1$
                 Messagebox.Button.YES, Messagebox.Button.NO }, Messagebox.QUESTION, clickListener);
     }
 	
@@ -104,7 +106,7 @@ public class UserGrid {
          * has changed as it is used in the template mechanism.
          * This stops the entire Grid's data from being refreshed
          */
-        BindUtils.postNotifyChange(null, null, ws, "editStatus");
+        BindUtils.postNotifyChange(null, null, ws, "editStatus"); //$NON-NLS-1$
     }
 
     public boolean getCurrentUserList() {

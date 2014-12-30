@@ -5,6 +5,7 @@ import org.fpaitrault.interfaces.dao.SettingDAO;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.util.resource.Labels;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.ClientInfoEvent;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
@@ -14,10 +15,10 @@ import org.zkoss.zk.ui.select.annotation.WireVariable;
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
 public class Login {
     private boolean firstLogin = false;
-    private String name = "";
-    private String password = "";
-    private String passwdConfirm = "";
-    private String passwdErrorMsg = "";
+    private String name = ""; //$NON-NLS-1$
+    private String password = ""; //$NON-NLS-1$
+    private String passwdConfirm = ""; //$NON-NLS-1$
+    private String passwdErrorMsg = ""; //$NON-NLS-1$
     
     @WireVariable
     private AuthenticationService authService;
@@ -70,7 +71,7 @@ public class Login {
         else
         {
             if(authService.login(getName(), getPassword()))
-                Executions.sendRedirect("/");
+                Executions.sendRedirect("/"); //$NON-NLS-1$
         }
     }
     
@@ -79,7 +80,7 @@ public class Login {
     public void firstLogin() {
         if(!getPassword().equals(getPasswdConfirm()))
         {
-            setPasswdErrorMsg("Les mots de passe ne correspondent pas");
+            setPasswdErrorMsg(Labels.getLabel("login.password.mismatch")); //$NON-NLS-1$
             return;
         }
         //Update password on database
@@ -89,10 +90,10 @@ public class Login {
             authService.updateEmail(getName(), getEmail());
         //Login application
         if(authService.login(getName(), getPassword()))
-            Executions.sendRedirect("/");
+            Executions.sendRedirect("/"); //$NON-NLS-1$
     }
     
     public String getBackground() {
-        return settingDAO.get("Login.BACKGROUND");
+        return settingDAO.get("Login.BACKGROUND"); //$NON-NLS-1$
     }
 }

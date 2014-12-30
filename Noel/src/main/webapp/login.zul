@@ -27,7 +27,7 @@
                         </div>
                     </row>
                     <row>
-                        <label value="${labels.login.password}"/>
+                        <label value="${labels.login.password.$}"/>
                         <div align="center">
                             <textbox width="90%" type="password"
                                 value="@bind(vm.password)" onOK="@command('login')" />

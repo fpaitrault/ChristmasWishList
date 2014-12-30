@@ -4,6 +4,9 @@
 <?meta name="apple-mobile-web-app-capable" content="yes"?>
 <?meta name="apple-mobile-web-app-status-bar-style" content="black"?>
 <?meta http-equiv="Content-Type" content="text/html; charset=utf-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?xel-method prefix="util" name="toStrArray" class="org.fpaitrault.XelUtil"
+    signature="java.lang.String[] toStrArray(java.lang.String)"?>
 <zk>
   <style src="http://codemirror.net/lib/codemirror.css"/>
   <style src="http://codemirror.net/addon/fold/foldgutter.css" />
@@ -54,7 +57,7 @@
             <tabbox height="100%" style="background: transparent;">
                 <tabs children="@load(vm.friends)" >
                     <template name="children">
-                        <tab label="${labels.index.list} ${each}"></tab>
+                        <tab label="${c:l2('index.list', util:toStrArray(each.name))}"></tab>
                     </template>
                 </tabs>
                 <tabpanels children="@load(vm.friends)">

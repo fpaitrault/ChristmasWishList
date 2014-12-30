@@ -40,12 +40,12 @@ public class MainWindow {
     @Command
     public void logout() {
         authService.logout();
-        Executions.sendRedirect("/login.zul");
+        Executions.sendRedirect("/login.zul"); //$NON-NLS-1$
     }
     
     @Command
     public void showAdmin() {
-        Executions.createComponents("admin.zul", null, null);
+        Executions.createComponents("admin.zul", null, null); //$NON-NLS-1$
     }
 
     public User getUser() {
@@ -56,10 +56,10 @@ public class MainWindow {
     }
 
     public String getBanner() {
-        return settingDAO.get("Index.BANNER");
+        return settingDAO.get("Index.BANNER"); //$NON-NLS-1$
     }
     
     public String getBackground() {
-        return settingDAO.get("Index.BACKGROUND");
+        return settingDAO.get("Index.BACKGROUND"); //$NON-NLS-1$
     }
 }
