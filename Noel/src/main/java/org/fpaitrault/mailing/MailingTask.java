@@ -74,8 +74,8 @@ public class MailingTask extends QuartzJobBean {
         // Setup mail server
         properties.setProperty("mail.smtp.auth", "true"); //$NON-NLS-1$ //$NON-NLS-2$
         properties.setProperty("mail.smtp.starttls.enable", "true"); //$NON-NLS-1$ //$NON-NLS-2$
-        properties.setProperty("mail.smtp.port", "587"); //$NON-NLS-1$ //$NON-NLS-2$
-        properties.setProperty("mail.smtp.host", "mail.gmx.com"); //$NON-NLS-1$ //$NON-NLS-2$
+        properties.setProperty("mail.smtp.port", settingDao.get("MailingTask.PORT")); //$NON-NLS-1$ //$NON-NLS-2$
+        properties.setProperty("mail.smtp.host", settingDao.get("MailingTask.HOST")); //$NON-NLS-1$ //$NON-NLS-2$
         // Get the default Session object.
         session = Session.getInstance(properties,
                 new javax.mail.Authenticator() {
